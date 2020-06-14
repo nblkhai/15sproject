@@ -6,6 +6,7 @@ import {
   faShippingFast,
   faMoneyBillWave,
   faHeadset,
+  faPeopleArrows,
 } from "@fortawesome/free-solid-svg-icons";
 import Colors from "../constants/Colors";
 import { Link } from "react-router-dom";
@@ -103,21 +104,18 @@ class Home extends React.Component {
           {/* ABOUT SECTION */}
           <div
           className="py-5"
-          style={{ marginTop: "128px", backgroundColor: Colors.white }}
+          style={{ marginTop: "128px", backgroundColor: Colors.darkGray }}
         >
           <div className="container">
             <div className="row">
               <div className="col-4 text-center d-flex flex-column align-items-center">
                 <FontAwesomeIcon
-                  icon={faShippingFast}
+                  icon={faPeopleArrows}
                   style={{ fontSize: 70, color: Colors.accentLight }}
                 />
-                <h3 className="font-weight-bolder mt-4">FAST SHIPPING</h3>
+                <h3 className="font-weight-bolder mt-4">Alfiansyah Ramdhani</h3>
                 <p className="mt-4">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic
-                  impedit facilis nam vitae, accusamus doloribus alias
-                  repellendus veniam voluptates ad doloremque sequi est, at
-                  fugit pariatur quisquam ratione, earum sapiente.
+                 Script Writer and Director
                 </p>
               </div>
               <div className="col-4 text-center d-flex flex-column align-items-center">
@@ -125,12 +123,9 @@ class Home extends React.Component {
                   icon={faMoneyBillWave}
                   style={{ fontSize: 70, color: Colors.accentLight }}
                 />
-                <h3 className="font-weight-bolder mt-4">100% REFUND</h3>
+                <h3 className="font-weight-bolder mt-4">Andi Rahmadi</h3>
                 <p className="mt-4">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic
-                  impedit facilis nam vitae, accusamus doloribus alias
-                  repellendus veniam voluptates ad doloremque sequi est, at
-                  fugit pariatur quisquam ratione, earum sapiente.
+                  Podcaster
                 </p>
               </div>
               <div className="col-4 text-center d-flex flex-column align-items-center">
@@ -138,15 +133,56 @@ class Home extends React.Component {
                   icon={faHeadset}
                   style={{ fontSize: 70, color: Colors.accentLight }}
                 />
-                <h3 className="font-weight-bolder mt-4">SUPPORT 24/7</h3>
+                <h3 className="font-weight-bolder mt-4">Fakhri Muhtadin</h3>
                 <p className="mt-4">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic
-                  impedit facilis nam vitae, accusamus doloribus alias
-                  repellendus veniam voluptates ad doloremque sequi est, at
-                  fugit pariatur quisquam ratione, earum sapiente.
+                  Editor
                 </p>
               </div>
             </div>
+            <div className="row">
+              <div className="col-4 text-center d-flex flex-column align-items-center">
+                <FontAwesomeIcon
+                  icon={faPeopleArrows}
+                  style={{ fontSize: 70, color: Colors.accentLight }}
+                />
+                <h3 className="font-weight-bolder mt-4">Fauzan Ramdhani</h3>
+                <p className="mt-4">
+                  Director of Photography
+                </p>
+              </div>
+              <div className="col-4 text-center d-flex flex-column align-items-center">
+                <FontAwesomeIcon
+                  icon={faMoneyBillWave}
+                  style={{ fontSize: 70, color: Colors.accentLight }}
+                />
+                <h3 className="font-weight-bolder mt-4">Nabila Khairunnisa</h3>
+                <p className="mt-4">
+                  Finance and Co-Producer
+                </p>
+              </div>
+              <div className="col-4 text-center d-flex flex-column align-items-center">
+                <FontAwesomeIcon
+                  icon={faHeadset}
+                  style={{ fontSize: 70, color: Colors.accentLight }}
+                />
+                <h3 className="font-weight-bolder mt-4">Wahyu Fahrandika</h3>
+                <p className="mt-4">
+                  Producer
+                </p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-4 text-center d-flex flex-column align-items-center">
+                <FontAwesomeIcon
+                  icon={faPeopleArrows}
+                  style={{ fontSize: 70, color: Colors.accentLight }}
+                />
+                <h3 className="font-weight-bolder mt-4">Yefta Ferdinand</h3>
+                <p className="mt-4">
+                  Script Writer and Director
+                </p>
+              </div>
+              </div>
           </div>
         </div>
       </div>
