@@ -7,13 +7,9 @@ import * as serviceWorker from "./serviceWorker";
 
 // Redux imports
 import { Provider } from "react-redux";
-import reducers from "../src/components/redux/reducers";
+import reducers from "../src/redux/reducers";
 import { createStore, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
-
-//styles
-// import "assets/css/bootstrap.min.css"
-// import "assets/css/paper-kit.css"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -30,4 +26,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-

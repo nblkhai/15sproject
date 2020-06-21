@@ -1,7 +1,7 @@
 :root {
-  --accent-default: #3c64b1;
-  --accent-dark: #1e4693;
-  --accent-light: #5a82cf;
+  --accent-default: #000000;
+  --accent-dark:#000000;
+  --accent-light: #fcfcfc;
 }
 
 .custom-btn {
@@ -58,6 +58,7 @@
 .custom-btn-textual {
   color: var(--accent-default);
   padding: 0 !important;
+  text-decoration-color: white;
 }
 
 .custom-btn-textual:hover {
