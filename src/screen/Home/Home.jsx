@@ -108,6 +108,31 @@ class Home extends React.Component {
           style={{ backgroundColor: Colors.white }}
         >
           <div className="container">
+            <div className="row justify-content-center">
+              <h2>About Us</h2>
+              <p>
+                15's Project is a film and advertising production house who
+                belived can make big impact to others thorough creative process
+                and inspiting output using the medium of videos and/or photos.
+                Focusing on some aspects that usually missed from major
+                viewpoint that can be called "The minor side of life"
+              </p>
+              <ButtonUI className="mb-5">
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/about"
+                >
+                  Meet Our Crews!
+                </Link>
+              </ButtonUI>
+            </div>
+          </div>
+
+          {/* PORTFOLIO SECTION */}
+
+          <div className="container">
+            <div className="row justify-content-center mb-3">
+            <h2>Portfolio</h2>
             <div className="row">
               <iframe
                 width="560"
@@ -117,12 +142,28 @@ class Home extends React.Component {
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
               ></iframe>
-              
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/9prGsOwui8o"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             </div>
-            <ButtonUI>
-                See More
+            <ButtonUI className="mt-3">
+                <Link
+                  style={{ textDecoration: "none", color: "inherit" }}
+                  to="/portfolio"
+                >
+                  See More
+                </Link>
               </ButtonUI>
+            </div>
           </div>
+
+          {/* OUR PACKAGE SECTION */}
+          
         </div>
       </div>
     );

@@ -5,6 +5,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import Navbar from "../src/components/Navbar/navbar";
 import Home from "./screen/Home/Home"
 import aboutUs from "./screen/AboutUs/aboutUs";
+import Portfolio from "./screen/Portfolio/Portfolio";
 
 
 class App extends React.Component {
@@ -15,6 +16,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={aboutUs} />
+          <Route exact path="/portfolio" component={Portfolio} />
         </Switch>
         <div style={{ height: "120px" }} />
       </>

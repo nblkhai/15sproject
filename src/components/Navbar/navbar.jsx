@@ -37,7 +37,7 @@ class Navbar extends React.Component {
             className="nav-link"
             style={{ color: "white", textDecoration: "none" }}
           >
-            <span>Meet Our Crews</span>
+            <span>Crews</span>
           </Link>
           <Link
             to="/portfolio"
