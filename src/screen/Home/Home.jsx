@@ -102,70 +102,146 @@ class Home extends React.Component {
             onClickHandler={this.nextHandler}
           />
         </Carousel>
-        {/* ABOUT SECTION */}
-        <div
-          className=" row d-flex flex-wrap justify-content-center py-5"
-          style={{ backgroundColor: Colors.white }}
-        >
-          <div className="container">
-            <div className="row justify-content-center">
-              <h2>About Us</h2>
-              <p>
-                15's Project is a film and advertising production house who
-                belived can make big impact to others thorough creative process
-                and inspiting output using the medium of videos and/or photos.
-                Focusing on some aspects that usually missed from major
-                viewpoint that can be called "The minor side of life"
-              </p>
-              <ButtonUI className="mb-5">
-                <Link
-                  style={{ textDecoration: "none", color: "inherit" }}
-                  to="/about"
-                >
-                  Meet Our Crews!
-                </Link>
-              </ButtonUI>
+        <div className="tokolapak_about_us">
+            <div className="container">
+                <div className="text-center tokolapak-heading">
+                    <h2><span>About Us</span></h2>
+                </div>
             </div>
-          </div>
-
-          {/* PORTFOLIO SECTION */}
-
-          <div className="container">
-            <div className="row justify-content-center mb-3">
-            <h2>Portfolio</h2>
-            <div className="row">
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/rErrfYdBAiI?start=2"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/9prGsOwui8o"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <div className="single_product_iner">
+                            <div className="row align-items-center justify-content-between">
+                                <div className="col-lg-6 col-sm-6">
+                                    <div className="single_product_img">
+                                        <img src="asset/img/LogoBaru.png" className="img-fluid" alt="#"/>
+                                        <img src="asset/img/product_overlay.png" alt="#"
+                                            className="product_overlay img-fluid"/>
+                                    </div>
+                                </div>
+                                <div className="col-lg-5 col-sm-6">
+                                    <div className="tokolapak_about_us_content">
+                                        <h4> <a>15's Project is a film and advertising production house who
+                                            belived can make big impact to others thorough creative process
+                                            and inspiting output using the medium of videos and/or photos.
+                                            Focusing on some aspects that usually missed from major
+                                            viewpoint that can be called "The minor side of life"</a> </h4>
+                                        <a href="#" className="myButton">Meet Our Team</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <ButtonUI className="mt-3">
-                <Link
-                  style={{ textDecoration: "none", color: "inherit" }}
-                  to="/portfolio"
-                >
-                  See More
-                </Link>
-              </ButtonUI>
-            </div>
-          </div>
-
-          {/* OUR PACKAGE SECTION */}
-          
         </div>
-      </div>
+     
+        <div className="our_packages">
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <div className="text-center tokolapak-heading">
+                            <h2><span>Portofolio</span></h2>
+                            <h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel cum cumque ipsam hic
+                                    harum. Facere, iste ab, natus non magnam cumque quibusdam esse quae numquam dolorum
+                                    beatae vitae ea aut!</p>
+                            </h5>
+                        </div>
+                        <div className="row">
+                            <iframe
+                              width="560"
+                              height="315"
+                              src="https://www.youtube.com/embed/rErrfYdBAiI?start=2"
+                              frameborder="100"
+                              margin-bottom="300px"
+                              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                              allowfullscreen
+                            ></iframe>
+                            <iframe
+                              width="560"
+                              height="315"
+                              src="https://www.youtube.com/embed/9prGsOwui8o"
+                              frameborder="100"
+                              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                              allowfullscreen
+                            ></iframe>
+                        </div>
+                        <div className="text-center">
+                            <a href="#" className="myButton text-center button-on-porto">View More</a>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                </div>
+        </div>
+
+        <div className="our_packages">
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <div className="text-center tokolapak-heading">
+                            <h2><span>Our Package</span></h2>
+                            <h5>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel cum cumque ipsam hic
+                                    harum. Facere, iste ab, natus non magnam cumque quibusdam esse quae numquam dolorum
+                                    beatae vitae ea aut!</p>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-lg-4 col-sm-6">
+                        <div className="single_product_item">
+                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <h3> <a href="single-product.html">Paket A</a> </h3>
+                            <p>Penjelasan Paket Ditaro Disini YA</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-sm-6">
+                        <div className="single_product_item">
+                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <h3> <a href="single-product.html">Paket B</a> </h3>
+                            <p>Penjelasan Paket Ditaro Disini YA</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-sm-6">
+                        <div className="single_product_item">
+                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <h3> <a href="single-product.html">Paket C</a> </h3>
+                            <p>Penjelasan Paket Ditaro Disini YA</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-sm-6">
+                        <div className="single_product_item">
+                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <h3> <a href="single-product.html">Paket D</a> </h3>
+                            <p>Penjelasan Paket Ditaro Disini YA</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-sm-6">
+                        <div className="single_product_item">
+                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <h3> <a href="single-product.html">Paket E</a> </h3>
+                            <p>Penjelasan Paket Ditaro Disini YA</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-sm-6">
+                        <div className="single_product_item">
+                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <h3> <a href="single-product.html">Paket F</a> </h3>
+                            <p>Penjelasan Paket Ditaro Disini YA</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="text-center">
+                    <a href="#" className="myButton text-center">Lihat Semua Package Kita</a>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
     );
   }
 }

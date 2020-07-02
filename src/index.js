@@ -11,6 +11,7 @@ import reducers from "../src/redux/reducers";
 import { createStore, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
 
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
