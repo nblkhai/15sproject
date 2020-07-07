@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Colors from "../../constants/Colors";
 import { Link } from "react-router-dom";
+import "./Home.css"
 import PosterSatu from "../../assets/images/poster.jpg";
 import PosterDua from "../../assets/images/posterr.jpg";
 import PosterTiga from "../../assets/images/poster(1).jpg";
@@ -158,6 +159,7 @@ class Home extends React.Component {
                               margin-bottom="300px"
                               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                               allowfullscreen
+                          
                             ></iframe>
                             <iframe
                               width="560"
@@ -194,42 +196,42 @@ class Home extends React.Component {
                 <div className="row">
                     <div className="col-lg-4 col-sm-6">
                         <div className="single_product_item">
-                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <img src={PosterSatu} alt="#" className="img-fluid"/>
                             <h3> <a href="single-product.html">Paket A</a> </h3>
                             <p>Penjelasan Paket Ditaro Disini YA</p>
                         </div>
                     </div>
                     <div className="col-lg-4 col-sm-6">
                         <div className="single_product_item">
-                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <img src={PosterSatu} alt="#" className="img-fluid"/>
                             <h3> <a href="single-product.html">Paket B</a> </h3>
                             <p>Penjelasan Paket Ditaro Disini YA</p>
                         </div>
                     </div>
                     <div className="col-lg-4 col-sm-6">
                         <div className="single_product_item">
-                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <img src={PosterSatu} alt="#" className="img-fluid"/>
                             <h3> <a href="single-product.html">Paket C</a> </h3>
                             <p>Penjelasan Paket Ditaro Disini YA</p>
                         </div>
                     </div>
                     <div className="col-lg-4 col-sm-6">
                         <div className="single_product_item">
-                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <img src={PosterSatu} alt="#" className="img-fluid"/>
                             <h3> <a href="single-product.html">Paket D</a> </h3>
                             <p>Penjelasan Paket Ditaro Disini YA</p>
                         </div>
                     </div>
                     <div className="col-lg-4 col-sm-6">
                         <div className="single_product_item">
-                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <img src={PosterSatu} alt="#" className="img-fluid"/>
                             <h3> <a href="single-product.html">Paket E</a> </h3>
                             <p>Penjelasan Paket Ditaro Disini YA</p>
                         </div>
                     </div>
                     <div className="col-lg-4 col-sm-6">
                         <div className="single_product_item">
-                            <img src="asset/img/package.jpg" alt="#" className="img-fluid"/>
+                            <img src={PosterSatu} alt="#" className="img-fluid"/>
                             <h3> <a href="single-product.html">Paket F</a> </h3>
                             <p>Penjelasan Paket Ditaro Disini YA</p>
                         </div>

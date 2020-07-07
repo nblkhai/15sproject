@@ -17,106 +17,6 @@ class aboutUs extends React.Component {
   render() {
     return (
 
-      // <div className="container">
-      //   <div className="row justify-content-center">
-      //     <div className="col-lg-8 ">
-      //       {/* <img src={PosterSatu} alt="" width="300px" /> */}
-      //     </div>
-      //   </div>
-      //   <h5>
-      //     15's Project is a film and advertising production house who belived
-      //     can make big impact to others thorough creative process and inspiting
-      //     output using the medium of videos and/or photos. Focusing on some
-      //     aspects that usually missed from major viewpoint that can be called
-      //     "The minor side of life"
-      //   </h5>
-      //   <h5>Our Mission</h5>
-      //   <h5>
-      //     Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-      //     sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec
-      //     sed neque.
-      //   </h5>
-      //   <h5>Our Mission</h5>
-      //   <h5>
-      //     Donec imperdiet congue orci consequat mattis. Donec rutrum porttitor
-      //     sollicitudin. Pellentesque id dolor tempor sapien feugiat ultrices nec
-      //     sed neque.
-      //   </h5>
-      //   <div className="container">
-      //     {/* <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-      //     <img src={PosterSatu} alt="" width="300px" />
-      //     <h3>Alfiansyah Ramdhani</h3>
-      //     <h4>Script Writer and Director
-      //     </h4>
-        
-      //     </div> */}
-      //      <div className="row">
-      //      <div className="col-lg-4 col-lg-sm-6">
-      //         <div>
-      //           <img src={PosterSatu} alt="" width="300px" />
-      //           <h3 className="text-center">
-      //           Alfiansyah Ramdhani
-      //           </h3>
-      //           <h4 className="text-center">Script Writer and Director
-      //     </h4>
-      //         </div>
-      //       </div>
-      //       <div className="col-lg-4 col-lg-sm-6">
-      //         <div>
-      //           <img src={PosterSatu} alt="" width="300px" />
-      //           <h3 className="text-center">
-      //           Alfiansyah Ramdhani
-      //           </h3>
-      //           <h4 className="text-center">Script Writer and Director
-      //     </h4>
-      //         </div>
-      //       </div>
-      //       <div className="col-lg-4 col-lg-sm-6">
-      //         <div>
-      //           <img src={PosterSatu} alt="" width="300px" />
-      //           <h3 className="text-center">
-      //           Alfiansyah Ramdhani
-      //           </h3>
-      //           <h4 className="text-center">Script Writer and Director
-      //     </h4>
-      //         </div>
-      //       </div>
-      //       <div className="col-lg-4 col-lg-sm-6">
-      //         <div>
-      //           <img src={PosterSatu} alt="" width="300px" />
-      //           <h3 className="text-center">
-      //           Alfiansyah Ramdhani
-      //           </h3>
-      //           <h4 className="text-center">Script Writer and Director
-      //     </h4>
-      //         </div>
-      //       </div>
-      //       <div className="col-lg-4 col-lg-sm-6">
-      //         <div>
-      //           <img src={PosterSatu} alt="" width="300px" />
-      //           <h3 className="text-center">
-      //           Alfiansyah Ramdhani
-      //           </h3>
-      //           <h4 className="text-center">Script Writer and Director
-      //     </h4>
-      //         </div>
-      //       </div>
-      //       <div className="col-lg-4 col-lg-sm-6">
-      //         <div>
-      //           <img src={PosterSatu} alt="" width="300px" />
-      //           <h3 className="text-center">
-      //           Alfiansyah Ramdhani
-      //           </h3>
-      //           <h4 className="text-center">Script Writer and Director
-      //     </h4>
-      //         </div>
-      //       </div>
-
-      //      </div>
-
-      //   </div>
-        
-      // </div>
     <div>
         <div className="breadcrumb_part">
       <div className="container">
@@ -260,7 +160,10 @@ class aboutUs extends React.Component {
                       </ul>
                   </div>
               </div>
-              <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+             
+      </div>
+      <div className="row">
+      <div className="col-8 col-sm-6 col-md-4 col-lg-3">
                   <div className="our-team">
                       <div className="picture">
                           <img className="img-fluid" src="https://picsum.photos/130/130?image=836"/>
@@ -281,7 +184,7 @@ class aboutUs extends React.Component {
                       </ul>
                   </div>
               </div>
-              <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+              <div className="col-8 col-sm-6 col-md-4 col-lg-3">
                   <div className="our-team">
                       <div className="picture">
                           <img className="img-fluid" src="https://picsum.photos/130/130?image=836"/>
@@ -302,7 +205,7 @@ class aboutUs extends React.Component {
                       </ul>
                   </div>
               </div>
-              <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+              <div className="col-8 col-sm-6 col-md-4 col-lg-3">
                   <div className="our-team">
                       <div className="picture">
                           <img className="img-fluid" src="https://picsum.photos/130/130?image=836"/>
@@ -323,6 +226,7 @@ class aboutUs extends React.Component {
                       </ul>
                   </div>
               </div>
+
       </div>
 
   </div>

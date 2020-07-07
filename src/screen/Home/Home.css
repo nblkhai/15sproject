@@ -6,4 +6,865 @@ background: white
     height: 900px;
   }
 
+  #page {
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s; }
+    .offcanvas #page {
+      overflow: hidden;
+      position: absolute; }
+      .offcanvas #page:after {
+        -webkit-transition: 2s;
+        -o-transition: 2s;
+        transition: 2s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 101;
+        background: rgba(0, 0, 0, 0.7);
+        content: ""; }
   
+
+
+
+nav {
+  background: #c4a7c9;
+  box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+  min-height: 70px;
+}
+.nav .nav-link-login{
+    margin-left: 200px;
+}
+
+#about-us{
+background:#e0d0c6;
+margin-right: center;
+}
+
+
+.tokolapak-heading {
+    margin-bottom: 5em; 
+    margin-top: 50px;}
+    .tokolapak-heading h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      color: #000;
+      position: relative;
+      text-transform: uppercase; }
+      .tokolapak-heading h2 span {
+        position: relative; }
+        .tokolapak-heading h2 span:after {
+          position: absolute;
+          top: 49%;
+          left: -80px;
+          bottom: 0;
+          content: '';
+          width: 60px;
+          height: 2px;
+          background: #FFC300; }
+        .tokolapak-heading h2 span:before {
+          position: absolute;
+          top: 49%;
+          right: -80px;
+          bottom: 0;
+          content: '';
+          width: 60px;
+          height: 2px;
+          background: #FFC300; 
+        }
+
+
+
+.tokolapak_about_us {
+    padding: 20px 0 20px;
+  }
+  
+  @media (max-width: 991px) {
+
+    .tokolapak_about_us {
+      padding: 100px 0 0;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+
+    .tokolapak_about_us {
+      padding: 100px 0 100px;
+    }
+  }
+  
+
+  .tokolapak_about_us .single_product_img {
+    position: relative;
+    margin: 35px 0 0 35px;
+  }
+  
+  @media (max-width: 991px) {
+
+    .tokolapak_about_us .single_product_img {
+      max-width: 204px;
+    }
+  }
+  
+
+  .tokolapak_about_us .single_product_img .product_overlay {
+    position: absolute;
+    left: -35px;
+    top: -35px;
+    z-index: -1;
+  }
+
+  .tokolapak_about_us .tokolapak_about_us_content h5 {
+    font-weight: 500;
+    font-size: 20px;
+    color: black;
+  }
+  
+  @media (max-width: 991px) {
+
+    .tokolapak_about_us .tokolapak_about_us_content h5 {
+      font-size: 16px;
+    }
+  }
+
+  .tokolapak_about_us .tokolapak_about_us_content h2 {
+    font-size: 40px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin: 10px 0 50px;
+  }
+  
+
+  .tokolapak_about_us .tokolapak_about_us_content h2 a {
+    color: black;
+  }
+  
+  
+  @media (max-width: 991px) {
+
+    .tokolapak_about_us .tokolapak_about_us_content h2 {
+      font-size: 25px;
+      margin: 10px 0 30px;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+
+    .tokolapak_about_us .tokolapak_about_us_content h2 {
+      font-size: 30px;
+      margin: 10px 0 30px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .tokolapak_about_us .tokolapak_about_us_content {
+      margin-top: 80px;
+    }
+    .tokolapak_about_us .tokolapak_about_us_content .btn_3 {
+      padding: 13px 29px;
+    }
+  }
+
+  .tokolapak_about_us .single_product_iner {
+    margin-bottom: 100px;
+  }
+  
+  @media (max-width: 991px) {
+    .tokolapak_about_us .single_product_iner {
+      margin-bottom: 60px;
+    }
+  }
+  
+
+  .tokolapak_about_us .single_product_iner:nth-child(2n-2) .row {
+    flex-direction: row-reverse;
+    margin-top: 140px;
+  }
+  
+  @media (max-width: 991px) {
+
+    .tokolapak_about_us .single_product_iner:nth-child(2n-2) .row {
+      margin-bottom: 70px;
+      margin-top: 100px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+
+    .tokolapak_about_us .single_product_iner:nth-child(2n-2) .row .tokolapak_about_us_content {
+      margin-top: 40px;
+    }
+
+    .tokolapak_about_us .single_product_iner:nth-child(2n-2) .row .tokolapak_about_us_content .btn_3 {
+      padding: 13px 29px;
+    }
+  }
+  
+
+  .tokolapak_about_us .single_product_iner:nth-child(2n-2) .row .single_product_img {
+    position: relative;
+    margin: 0 35px 35px 0;
+  }
+
+  .tokolapak_about_us .single_product_iner:nth-child(2n-2) .row .single_product_img .product_overlay {
+    position: absolute;
+    left: auto;
+    right: -35px;
+    top: -35px;
+    z-index: -1;
+  }
+
+a.myButton:visited
+{
+ color:inherit;
+}
+  .myButton {
+	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background:linear-gradient(to bottom, #9e8fb2 5%, #6c7c7c 100%);
+	background-color:#768d87;
+	border-radius:5px;
+	border:1px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	padding:14px 49px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	background-color:#6c7c7c;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+/* line 1, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+.our_packages {
+    padding: 10px 0 70px;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 1, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+    .our_packages {
+      padding: 20px 0 40px;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    /* line 1, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+    .our_packages {
+      padding: 100px 0 70px;
+    }
+  }
+  
+  /* line 12, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+  .single_product_item {
+    margin-bottom: 58px;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 12, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+    .single_product_item {
+      margin-bottom: 30px;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    /* line 12, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+    .single_product_item {
+      margin-bottom: 30px;
+    }
+  }
+  
+  /* line 20, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+  .single_product_item .single_product_item_thumb {
+    background-color: #fff;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  /* line 25, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+  .single_product_item h3 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 22px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 25, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+    .single_product_item h3 {
+      font-size: 18px;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    /* line 25, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+    .single_product_item h3 {
+      font-size: 18px;
+    }
+  }
+  
+  /* line 37, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+  .single_product_item h3 a {
+    color: #4B3049;
+  }
+  
+  /* line 39, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+  .single_product_item h3 a:hover {
+    color: #B08EAD;
+  }
+  
+  /* line 44, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+  .single_product_item p {
+    font-size: 20px;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 44, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+    .single_product_item p {
+      font-size: 16px;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    /* line 44, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_our_packages.scss */
+    .single_product_item p {
+      font-size: 16px;
+    }
+  }
+
+  .footer_part .footer_iner {
+    padding: 70px 0;
+    background-color: #9e8fb2;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 3, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+    .footer_part .footer_iner {
+      padding: 70px 0;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    /* line 3, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+    .footer_part .footer_iner {
+      padding: 100px 0;
+    }
+  }
+  
+  /* line 11, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+  .footer_part .footer_iner .footer_menu {
+    display: flex;
+    align-items: center;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 11, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+    .footer_part .footer_iner .footer_menu {
+      display: block;
+    }
+  }
+  
+  /* line 19, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+  .footer_part .footer_iner .footer_logo a {
+    display: inline-block;
+    margin-right: 45px;
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    /* line 19, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+    .footer_part .footer_iner .footer_logo a {
+      margin-right: 10px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    /* line 27, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+    .footer_part .footer_iner .footer_menu_item {
+      margin-top: 15px;
+    }
+  }
+  
+  /* line 31, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+  .footer_part .footer_iner .footer_menu_item a {
+    display: inline-block;
+    color: #4B3049;
+    font-size: 16px;
+    padding: 0 17px;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 31, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+    .footer_part .footer_iner .footer_menu_item a {
+      padding: 0 15px 0 0;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    /* line 31, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+    .footer_part .footer_iner .footer_menu_item a {
+      padding: 0 7px;
+    }
+  }
+  
+  /* line 42, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+  .footer_part .footer_iner .footer_menu_item a:hover {
+    color: #E4D3DF;
+  }
+  
+  /* line 48, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+  .footer_part .social_icon {
+    text-align: right;
+    margin-top:10px;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 48, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+    .footer_part .social_icon {
+      text-align: left;
+      margin-top: 25px;
+    }
+  }
+  
+  /* line 54, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+  .footer_part .social_icon a {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-color: #4B3049;
+    line-height: 45px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+  }
+  .footer_part .social_icon i {
+    padding: 0.95em;
+  
+  }
+  
+  /* line 63, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+  .footer_part .social_icon a:hover {
+    background-color: #E4D3DF;
+  }
+  
+  /* line 69, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+  .footer_part .copyright_part {
+    background-color: #F4EDF2;
+    padding: 30px 0px;
+  }
+  
+  /* line 72, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+  .footer_part .copyright_part .copyright_text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 72, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+    .footer_part .copyright_part .copyright_text {
+      display: block;
+    }
+  }
+  
+  /* line 80, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+  .footer_part .copyright_part .copyright_text p a {
+    color: #4B3049;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 85, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+    .footer_part .copyright_part .copyright_link {
+      margin-top: 20px;
+    }
+  }
+  
+  /* line 89, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+  .footer_part .copyright_part .copyright_link a {
+    color: #4B3049;
+    margin-left: 40px;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 89, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_footer.scss */
+    .footer_part .copyright_part .copyright_link a {
+      margin-left: auto;
+      margin-right: 25px;
+    }
+  }
+
+  .button-on-porto{
+    margin-top:40px;
+  }
+  
+  .img-carousel{
+    max-height: 600px;
+    width:auto;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  }
+
+  .btn_3 {
+    display: inline-block;
+    padding: 18px 36px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #B08EAD;
+    font-size: 15px;
+    font-weight: 700;
+    color: #B08EAD;
+    text-transform: uppercase;
+    font-weight: 400;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  
+  /* line 56, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_button.scss */
+  .btn_3:hover {
+    background-color: #B08EAD;
+    color: #fff;
+  }
+  
+  @media (max-width: 991px) {
+    /* line 44, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_button.scss */
+    .btn_3 {
+      padding: 13px 35px;
+    }
+  }
+
+  .genric-btn {
+    display: inline-block;
+    outline: none;
+    line-height: 40px;
+    padding: 0 30px;
+    font-size: .8em;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+  }
+  
+  /* line 167, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn:focus {
+    outline: none;
+  }
+  
+  /* line 170, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.e-large {
+    padding: 0 40px;
+    line-height: 50px;
+  }
+  
+  /* line 174, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.large {
+    line-height: 45px;
+  }
+  
+  /* line 177, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.medium {
+    line-height: 30px;
+  }
+  
+  /* line 180, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.small {
+    line-height: 25px;
+  }
+  
+  /* line 183, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.radius {
+    border-radius: 3px;
+  }
+  
+  /* line 186, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.circle {
+    border-radius: 20px;
+  }
+  
+  /* line 189, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.arrow {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  
+  /* line 196, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.arrow span {
+    margin-left: 10px;
+  }
+  
+  /* line 200, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.default {
+    color: #415094;
+    background: #f9f9ff;
+    border: 1px solid transparent;
+  }
+  
+  /* line 204, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.default:hover {
+    border: 1px solid #f9f9ff;
+    background: #fff;
+  }
+  
+  /* line 209, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.default-border {
+    border: 1px solid #f9f9ff;
+    background: #fff;
+  }
+  
+  /* line 212, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.default-border:hover {
+    color: #415094;
+    background: #f9f9ff;
+    border: 1px solid transparent;
+  }
+  
+  /* line 218, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.primary {
+    color: #fff;
+    background: #B08EAD;
+    border: 1px solid transparent;
+  }
+  
+  /* line 222, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.primary:hover {
+    color: #B08EAD;
+    border: 1px solid #B08EAD;
+    background: #fff;
+  }
+  
+  /* line 228, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.primary-border {
+    color: #B08EAD;
+    border: 1px solid #B08EAD;
+    background: #fff;
+  }
+  
+  /* line 232, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.primary-border:hover {
+    color: #fff;
+    background: #B08EAD;
+    border: 1px solid transparent;
+  }
+  
+  /* line 238, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.success {
+    color: #fff;
+    background: #4cd3e3;
+    border: 1px solid transparent;
+  }
+  
+  /* line 242, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.success:hover {
+    color: #4cd3e3;
+    border: 1px solid #4cd3e3;
+    background: #fff;
+  }
+  
+  /* line 248, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.success-border {
+    color: #4cd3e3;
+    border: 1px solid #4cd3e3;
+    background: #fff;
+  }
+  
+  /* line 252, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.success-border:hover {
+    color: #fff;
+    background: #4cd3e3;
+    border: 1px solid transparent;
+  }
+  
+  /* line 258, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.info {
+    color: #fff;
+    background: #38a4ff;
+    border: 1px solid transparent;
+  }
+  
+  /* line 262, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.info:hover {
+    color: #38a4ff;
+    border: 1px solid #38a4ff;
+    background: #fff;
+  }
+  
+  /* line 268, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.info-border {
+    color: #38a4ff;
+    border: 1px solid #38a4ff;
+    background: #fff;
+  }
+  
+  /* line 272, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.info-border:hover {
+    color: #fff;
+    background: #38a4ff;
+    border: 1px solid transparent;
+  }
+  
+  /* line 278, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.warning {
+    color: #fff;
+    background: #f4e700;
+    border: 1px solid transparent;
+  }
+  
+  /* line 282, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.warning:hover {
+    color: #f4e700;
+    border: 1px solid #f4e700;
+    background: #fff;
+  }
+  
+  /* line 288, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.warning-border {
+    color: #f4e700;
+    border: 1px solid #f4e700;
+    background: #fff;
+  }
+  
+  /* line 292, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.warning-border:hover {
+    color: #fff;
+    background: #f4e700;
+    border: 1px solid transparent;
+  }
+  
+  /* line 298, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.danger {
+    color: #fff;
+    background: #f44a40;
+    border: 1px solid transparent;
+  }
+  
+  /* line 302, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.danger:hover {
+    color: #f44a40;
+    border: 1px solid #f44a40;
+    background: #fff;
+  }
+  
+  /* line 308, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.danger-border {
+    color: #f44a40;
+    border: 1px solid #f44a40;
+    background: #fff;
+  }
+  
+  /* line 312, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.danger-border:hover {
+    color: #fff;
+    background: #f44a40;
+    border: 1px solid transparent;
+  }
+  
+  /* line 318, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.link {
+    color: #415094;
+    background: #f9f9ff;
+    text-decoration: underline;
+    border: 1px solid transparent;
+  }
+  
+  /* line 323, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.link:hover {
+    color: #415094;
+    border: 1px solid #f9f9ff;
+    background: #fff;
+  }
+  
+  /* line 329, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.link-border {
+    color: #415094;
+    border: 1px solid #f9f9ff;
+    background: #fff;
+    text-decoration: underline;
+  }
+  
+  /* line 334, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.link-border:hover {
+    color: #415094;
+    background: #f9f9ff;
+    border: 1px solid transparent;
+  }
+  
+  /* line 340, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .genric-btn.disable {
+    color: #222222, 0.3;
+    background: #f9f9ff;
+    border: 1px solid transparent;
+    cursor: not-allowed;
+  }
+  
+  /* line 348, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_elements.scss */
+  .generic-blockquote {
+    padding: 30px 50px 30px 30px;
+    background: #f9f9ff;
+    border-left: 2px solid #B08EAD;
+  }
+
+  .section_padding {
+    padding: 200px 0px;
+  }
+  
+  @media only screen and (min-width: 992px) and (max-width: 1200px) {
+    /* line 20, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_common.scss */
+    .section_padding {
+      padding: 100px 0px;
+    }
+  }
+  
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* line 20, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_common.scss */
+    .section_padding {
+      padding: 70px 0px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    /* line 20, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_common.scss */
+    .section_padding {
+      padding: 70px 0px;
+    }
+  }
+  
+  @media only screen and (min-width: 576px) and (max-width: 767px) {
+    /* line 20, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_common.scss */
+    .section_padding {
+      padding: 70px 0px;
+    }
+  }
+
+  .p_star .placeholder::before {
+    content: attr(data-placeholder);
+    color: #777;
+  }
+  
+  /* line 1542, /Applications/MAMP/htdocs/old/palash/cl/shop_html/sass/_product.scss */
+  .p_star .placeholder::after {
+    content: " *";
+    color: tomato;
+  }

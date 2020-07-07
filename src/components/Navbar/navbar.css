@@ -1,7 +1,7 @@
 :root {
-    --accent-default: #b13c3c;
-    --accent-dark: #931e1e;
-    --accent-light: #cf5a5a;
+    --accent-default: #be76ca;
+    --accent-dark: #be81c9;
+    --accent-light:  #c4a7c9;
     --gray-lightest: #f4f5f4;
   }
 
@@ -42,7 +42,7 @@
   }
 
   .navbar-container{
-      background-color: rgb(70, 9, 1);
+      background-color: rgb(196, 167, 201);
       padding: 0 120px;
   }
 

@@ -7,6 +7,8 @@ import Home from "./screen/Home/Home"
 import aboutUs from "./screen/AboutUs/aboutUs";
 import Portfolio from "./screen/Portfolio/Portfolio";
 import Login from "./screen/Login/Login";
+import Package from "./screen/Package/Package";
+import Register from "./screen/Register/Register";
 
 
 class App extends React.Component {
@@ -18,7 +20,9 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={aboutUs} />
           <Route exact path="/portfolio" component={Portfolio} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/Register" component={Register} />
+          <Route exact path="/package" component={Package} />
         </Switch>
         <div style={{ height: "120px" }} />
       </>
