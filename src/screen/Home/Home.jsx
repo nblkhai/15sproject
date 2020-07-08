@@ -1,14 +1,6 @@
 import React from "react";
 import "./Home.css";
 import { Carousel, CarouselControl, CarouselItem } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShippingFast,
-  faMoneyBillWave,
-  faHeadset,
-  faPeopleArrows,
-} from "@fortawesome/free-solid-svg-icons";
-import Colors from "../../constants/Colors";
 import { Link } from "react-router-dom";
 import "./Home.css"
 import PosterSatu from "../../assets/images/poster.jpg";
@@ -128,7 +120,14 @@ class Home extends React.Component {
                                             and inspiting output using the medium of videos and/or photos.
                                             Focusing on some aspects that usually missed from major
                                             viewpoint that can be called "The minor side of life"</a> </h4>
-                                        <a href="#" className="myButton">Meet Our Team</a>
+                                           <div className="text-center mt-3">
+                                           <div className="btn_3"><Link
+                    style={{ textDecoration: "none", color: "inherit" }}
+                    to="/about"
+                  >
+                    Meet Our Crews!
+                  </Link></div>
+                                           </div>
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +150,8 @@ class Home extends React.Component {
                             </h5>
                         </div>
                         <div className="row">
-                            <iframe
+                           
+                           <iframe
                               width="560"
                               height="315"
                               src="https://www.youtube.com/embed/rErrfYdBAiI?start=2"
@@ -169,9 +169,15 @@ class Home extends React.Component {
                               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                               allowfullscreen
                             ></iframe>
+                         
                         </div>
-                        <div className="text-center">
-                            <a href="#" className="myButton text-center button-on-porto">View More</a>
+                        <div className="text-center mt-3">
+                        <div className="btn_3"><Link
+                    style={{ textDecoration: "none", color: "inherit" }}
+                    to="/about"
+                  >
+                   Views More
+                  </Link></div>
                         </div>
                     </div>
                 </div>
@@ -237,9 +243,14 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="text-center">
-                    <a href="#" className="myButton text-center">Lihat Semua Package Kita</a>
-                </div>
+                <div className="text-center mt-3">
+                        <div className="btn_3"><Link
+                    style={{ textDecoration: "none", color: "inherit" }}
+                    to="/about"
+                  >
+                  See All Package
+                  </Link></div>
+                        </div>
             </div>
         </div>
         </div>

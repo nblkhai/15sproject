@@ -1,9 +1,54 @@
 import React from "react";
 import "../Login/Login.css";
 import "../Home/Home.css"
+import { connect } from "react-redux";
+import Cookies from "universal-cookie";
+import {registerHandler} from "../../redux/actions"
 
 
 class Register extends React.Component {
+  state = {
+    registerForm: {
+      firstName:"",
+       lastName:"", 
+       userName:"", 
+       password:"", 
+       emailAddress:"",
+       phoneNumber:"",
+      showPassword: false,
+    },
+  };
+  registerBtnHandler = () => {
+    console.log("register")
+    const {firstName, lastName, userName, password, emailAddress,phoneNumber } = this.state.registerForm;
+    let newUser = {
+      firstName, 
+      lastName,
+      userName,
+      password,
+      emailAddress,
+      phoneNumber
+    };
+    this.props.onRegister(newUser);
+  };
+
+  inputHandler = (e, field, form) => {
+    console.log("Masuk")
+    const { value } = e.target;
+    this.setState({
+      [form]: {
+        ...this.state[form],
+        [field]: value,
+      },
+    });
+    console.log(e.target);
+  };
+  componentDidUpdate() {
+    if (this.props.user.id) {
+      const cookie = new Cookies();
+      cookie.set("authData", JSON.stringify(this.props.user), { path: "/" });
+    }
+  }
   render() {
     return (
       
@@ -24,10 +69,9 @@ class Register extends React.Component {
                       <input
                         type="text"
                         className="form-control"
-                        id="firstname"
-                        name="name"
-                        value=""
+                        value={this.state.registerForm.firstName}
                         placeholder="First Name"
+                        onChange={(e) => this.inputHandler(e, "firstName",  "registerForm")}
                       />
                     </div>
                     <div className="col-md-12 form-group p_star">
@@ -35,10 +79,9 @@ class Register extends React.Component {
                       <input
                         type="text"
                         className="form-control"
-                        id="lastname"
-                        name="name"
-                        value=""
+                        value={this.state.registerForm.lastName}
                         placeholder="Last Name"
+                        onChange={(e) => this.inputHandler(e, "lastName","registerForm")}
                       />
                     </div>
                     <div className="col-md-12 form-group p_star">
@@ -46,10 +89,9 @@ class Register extends React.Component {
                       <input
                         type="text"
                         className="form-control"
-                        id="name"
-                        name="name"
-                        value=""
+                        value={this.state.registerForm.userName}
                         placeholder="Username"
+                        onChange={(e) => this.inputHandler(e, "userName","registerForm")}
                       />
                     </div>
                     <div className="col-md-12 form-group p_star">
@@ -57,10 +99,10 @@ class Register extends React.Component {
                       <input
                         type="password"
                         className="form-control"
-                        id="password"
-                        name="password"
-                        value=""
+                       
+                        value={this.state.registerForm.password}
                         placeholder="Password"
+                        onChange={(e) => this.inputHandler(e, "password","registerForm")}
                       />
                     </div>
                     <div className="col-md-12 form-group p_star">
@@ -68,10 +110,10 @@ class Register extends React.Component {
                       <input
                         type="text"
                         className="form-control"
-                        id="email"
-                        name="email"
-                        value=""
+                       
+                        value={this.state.registerForm.em}
                         placeholder="Email"
+                        onChange={(e) => this.inputHandler(e, "emailAddress","registerForm")}
                       />
                     </div>
                     <div className="col-md-12 form-group p_star">
@@ -79,16 +121,16 @@ class Register extends React.Component {
                       <input
                         type="text"
                         className="form-control"
-                        id="phonenumber"
-                        name="number"
-                        value=""
+                       
+                        vvalue={this.state.registerForm.phoneNumber}
                         placeholder="Phone Number"
+                        onChange={(e) => this.inputHandler(e, "phoneNumber","registerForm")}
                       />
                     </div>
                     <div className="col-md-12 form-group">
-                      <a href="login.html" className="btn_3">
+                      <div className="btn_3" onClick={this.registerBtnHandler}>
                         Create an Account
-                      </a>
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -100,4 +142,13 @@ class Register extends React.Component {
     );
   }
 }
-export default Register;
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+const mapDispatchToProps = {
+  onRegister: registerHandler,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

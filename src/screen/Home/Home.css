@@ -5,7 +5,14 @@ background: white
     width: 100vw;
     height: 900px;
   }
-
+  .kiri-kanan {
+    clear:both;
+    width:1em;
+    }
+    .atas-bawah {
+      clear:both;
+      height:1em;
+      }
   #page {
     position: relative;
     overflow-x: hidden;

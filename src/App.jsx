@@ -9,7 +9,8 @@ import Portfolio from "./screen/Portfolio/Portfolio";
 import Login from "./screen/Login/Login";
 import Package from "./screen/Package/Package";
 import Register from "./screen/Register/Register";
-
+import AdminDashboard from "../src/screen/Admin/Dashboard/AdminDashboard"
+import Members from "./screen/Admin/Members/Members";
 
 class App extends React.Component {
   render() {
@@ -23,6 +24,8 @@ class App extends React.Component {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Register" component={Register} />
           <Route exact path="/package" component={Package} />
+          <Route exact path="/admin/adminDashboard" component={AdminDashboard} />
+          <Route exact path="/admin/members" component={Members} />
         </Switch>
         <div style={{ height: "120px" }} />
       </>
