@@ -13,6 +13,7 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons/";
 import { faUser } from "@fortawesome/free-solid-svg-icons"
 import ButtonUI from "../Button/Button";
 import Logo from "../../assets/images/LogoBaru.png"
+import { logoutHandler } from "../../redux/actions/user";
 
 const CircleBg = ({ children }) => {
   return <div className="circle-bg">{children}</div>;
@@ -21,6 +22,14 @@ const CircleBg = ({ children }) => {
 class Navbar extends React.Component {
   state = {
     dropdownOpen: false,
+  };
+  logoutBtnHandler = () => {
+    this.props.onLogout();
+    // this.forceUpdate();
+  };
+
+  toggleDropdown = () => {
+    this.setState({ dropdownOpen: !this.state.dropdownOpen });
   };
 
   render() {
@@ -70,7 +79,7 @@ class Navbar extends React.Component {
                   <DropdownToggle tag="div" className="d-flex">
                     <FontAwesomeIcon icon={faUser} style={{ fontSize: 24 }} />
                     <p className="small ml-3 mr-4">
-                      {this.props.user.username}
+                      {this.props.user.userName}
                     </p>
                   </DropdownToggle>
                   <DropdownMenu className="mt-2">
@@ -174,5 +183,9 @@ const mapStateToProps = (state) => {
     user: state.user,
   };
 };
+const mapDispatchToProps = {
+  onLogout: logoutHandler
 
-export default connect(mapStateToProps)(Navbar);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

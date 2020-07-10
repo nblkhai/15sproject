@@ -1,13 +1,16 @@
-import { API_URL } from "../../constants/API";
+// import {API_URL} from "../../API"
 import Axios from "axios";
 import userTypes from "../types/user";
 import Cookie from "universal-cookie";
 
+const API_URL = `http://localhost:8080`
 const cookieObj = new Cookie();
 const {
   ON_LOGIN_SUCCESS,
   ON_LOGIN_FAIL,
-  ON_LOGOUT_SUCCESS
+  ON_LOGOUT_SUCCESS,
+  ON_REGISTER_SUCCESS,
+  ON_REGISTER_FAIL
 } = userTypes;
 
 export const cookieChecker = () => {
@@ -18,10 +21,10 @@ export const cookieChecker = () => {
 
 export const loginHandler = (userData) => {
   return (dispatch) => {
-    const { username, password } = userData;
+    const { userName, password } = userData;
     Axios.get(`${API_URL}/user/login`, {
       params: {
-        username,
+        userName,
         password,
       },
     })
@@ -30,20 +33,20 @@ export const loginHandler = (userData) => {
           type: ON_LOGIN_SUCCESS,
           payload: res.data,
         });
-        Axios.get(`${API_URL}/carts`, {
-          params: {
-            userId: res.data.id,
-          },
-        })
-          .then((res) => {
-            dispatch({
-              type: "FILL_CART",
-              payload: res.data.length,
-            });
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+      //   Axios.get(`${API_URL}/carts`, {
+      //     params: {
+      //       userId: res.data.id,
+      //     },
+      //   })
+      //     .then((res) => {
+      //       dispatch({
+      //         type: "FILL_CART",
+      //         payload: res.data.length,
+      //       });
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
       })
       .catch((err) => {
         dispatch({
@@ -104,58 +107,25 @@ export const logoutHandler = () => {
 
 export const registerHandler = (userData) => {
   return (dispatch) => {
-    Axios.get(`${API_URL}/user/username`, {
-      params: {
-        username: userData.userName,
-      },
-    })
-      .then((res) => {
-        if (res.data.length > 0) {
-          dispatch({
-            type: "ON_REGISTER_FAIL",
-            payload: "Username already used",
-          });
-          // alert("ga masuk");
-        } else {
-          Axios.post(`${API_URL}/user`, {
-            firstname: userData.firstName,
-            lastname: userData.lastName,
-            username: userData.userName,
-            password: userData.password,
-            email: userData.emailAddress,
-            phonenumber: userData.phoneNumber
-          })
-            .then((res) => {
-              dispatch({
-                type: ON_LOGIN_SUCCESS,
-                payload: res.data,
-              });
-
-              // Axios.get(`${API_URL}/carts`, {
-              //   params: {
-              //     userId: res.data.id,
-              //   },
-              // })
-              //   .then((res) => {
-              //     dispatch({
-              //       type: "FILL_CART",
-              //       payload: res.data.length,
-              //     });
-              //   })
-              //   .catch((err) => {
-              //     console.log(err);
-              //   });
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }
+      Axios.post(`${API_URL}/user`, {
+          ...userData, role: "user"
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-};
+          .then((res) => {
+              dispatch({
+                  type: ON_REGISTER_SUCCESS,
+                  payload: res.data
+              })
+              console.log(res)
+          })
+          .catch((err) => {
+              dispatch({
+                  type: ON_REGISTER_FAIL,
+                  payload: "Error"
+              })
+              
+          })
+  }
+}
 
 
 export const fillCart = (userId) => {

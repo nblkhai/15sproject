@@ -1,8 +1,49 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ButtonUI from "../../components/Button/Button";
+import { connect } from "react-redux";
+import Cookies from "universal-cookie";
+import {loginHandler} from "../../redux/actions"
 
 class Login extends React.Component {
+    state = {
+        loginForm: {
+          userName: "",
+          password: "",
+          showPassword: false,
+        },
+      };
+
+      inputHandler = (e, field, form) => {
+        console.log("Masuk")
+        const { value } = e.target;
+        this.setState({
+          [form]: {
+            ...this.state[form],
+            [field]: value,
+          },
+        });
+        console.log(e.target);
+      };
+
+      componentDidUpdate() {
+        if (this.props.user.id) {
+          const cookie = new Cookies();
+          cookie.set("authData", JSON.stringify(this.props.user), { path: "/" });
+        }
+      }
+
+      loginBtnHandler = () => {
+        console.log("Login")
+        const { userName, password } = this.state.loginForm;
+        let newUser = {
+          userName,
+          password,
+        };
+    
+        this.props.onLogin(newUser);
+      };
+    
   render() {
     return (
       <div className="container">
@@ -32,11 +73,13 @@ class Login extends React.Component {
                                 Please Sign in now</h3>
                             <form className="row contact_form" action="#" method="post" novalidate="novalidate">
                                 <div className="col-md-12 form-group p_star">
-                                    <input type="text" className="form-control" id="name" name="name" value=""
+                                    <input type="text" className="form-control" value={this.state.loginForm.username}
+            onChange={(e) => this.inputHandler(e, "userName", "loginForm")}
                                         placeholder="Username"/>
                                 </div>
                                 <div className="col-md-12 form-group p_star">
-                                    <input type="password" className="form-control" id="password" name="password" value=""
+                                    <input type="password" className="form-control"value={this.state.loginForm.username}
+            onChange={(e) => this.inputHandler(e, "password", "loginForm")}
                                         placeholder="Password"/>
                                 </div>
                                 <div className="col-md-12 form-group">
@@ -44,7 +87,7 @@ class Login extends React.Component {
                                         <input type="checkbox" id="f-option" name="selector"/>
                                         <label for="f-option">Remember me</label>
                                     </div>
-                                    <div className="btn_3">Log In</div>
+                                    <div className="btn_3"   onClick={this.loginBtnHandler}>Log In</div>
                         
                                 </div>
                             </form>
@@ -61,4 +104,13 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {
+      user: state.user,
+    };
+  };
+  const mapDispatchToProps = {
+    onLogin: loginHandler,
+  };
+  export default connect(mapStateToProps, mapDispatchToProps)(Login);
+  

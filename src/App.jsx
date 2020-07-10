@@ -11,8 +11,44 @@ import Package from "./screen/Package/Package";
 import Register from "./screen/Register/Register";
 import AdminDashboard from "../src/screen/Admin/Dashboard/AdminDashboard"
 import Members from "./screen/Admin/Members/Members";
+import Cookie from "universal-cookie";
+import { userKeepLogin,cookieChecker } from "../src/redux/actions/user";
+import { connect } from "react-redux";
 
+const cookieObj = new Cookie();
 class App extends React.Component {
+  componentDidMount() {
+    let cookieResult = cookieObj.get("authData", { path: "/" });
+    if (cookieResult) {
+      this.props.keepLogin(cookieResult);
+    } else {
+      this.props.cookieChecker();
+    }
+  }
+  
+  renderAdminRoutes = () => {
+    if (this.props.user.role === "admin") {
+      return (
+        <>
+          <Route exact path="/admin/dashboard" component={AdminDashboard} />
+         
+          <Route exact path="/admin/members" component={Members} />
+        </>
+      );
+    }
+  };
+
+  renderProtectedRoutes = () => {
+    if (this.props.user.id) {
+      return (
+        <>
+ 
+          <Route exact path="/history" component={History} />
+   
+        </>
+      );
+    }
+  };
   render() {
     return (
       <>
@@ -24,12 +60,22 @@ class App extends React.Component {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Register" component={Register} />
           <Route exact path="/package" component={Package} />
-          <Route exact path="/admin/adminDashboard" component={AdminDashboard} />
-          <Route exact path="/admin/members" component={Members} />
         </Switch>
         <div style={{ height: "120px" }} />
       </>
     );
   }
 }
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+const mapDispatchToProps = {
+  keepLogin: userKeepLogin,
+  cookieChecker
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
+
