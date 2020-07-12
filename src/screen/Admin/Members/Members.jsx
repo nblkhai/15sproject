@@ -2,11 +2,29 @@ import React from "react";
 import "../Members/Members.css";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import TextField from "../../../components/TextField/TextField.css";
-
+import Axios from "axios";
+import { API_URL } from "../../../constants/API";
 class Members extends React.Component {
   state = {
+    memberList:[],
     modalOpen: false,
   };
+  getMemberList = () => {
+    Axios.get(`${API_URL}/user/users`)
+      .then((res) => {
+        this.setState({ memberList: res.data });
+        console.log(res.data)
+        console.log(this.state.memberList)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  componentDidMount() {
+    this.getMemberList();
+    console.log(this.state.memberList)
+  }
+
   toggleModal = () => {
     this.setState({ modalOpen: !this.state.modalOpen });
   };
@@ -18,6 +36,37 @@ class Members extends React.Component {
       modalOpen: true,
     });
   };
+  renderMemberList = () => {
+    return this.state.memberList.map((val,idx) => {
+        const{
+            id,firstName,lastName,userName,emailAddress,phoneNumber
+        } = val
+        return(
+            <>
+            <tr>
+       
+            <td>{id}</td>
+        <td>{firstName}</td>
+        <td>{lastName}</td>
+        <td>{firstName} {lastName}</td>
+        <td>{userName}</td>
+        <td>{emailAddress}</td>
+        <td>{phoneNumber}</td>
+
+        <td>
+        <div
+          className="list_package_edit.html"
+          className="genric-btn info circle"
+        >
+          Edit
+        </div>
+        <div className="genric-btn danger circle">Delete</div>
+      </td>
+            </tr>
+            </>
+        )
+    })
+}
   render() {
     return (
       <div className="cart_area">
@@ -32,36 +81,17 @@ class Members extends React.Component {
               <table className="table">
                 <thead>
                   <tr>
-                    <th scope="col">Username</th>
+                  <th scope="col">No</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Username</th>
                     <th scope="col">Email</th>
                     <th scope="col">Mobile Phone</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
-                <tbody><tr><td>
-                                    <h5>adirach14</h5>
-                                </td>
-                                <td>
-                                    <p>Adi</p>
-                                </td>
-                                <td>
-                                    <p>Rachmanto</p>
-                                </td>
-                                
-                                <td>
-                                    <h5>adirachmato14@gmail.com</h5>
-                                </td>
-                                <td>
-                                    <h5>08574213243</h5>
-                                </td>
-                                <td>
-                                    <div class="genric-btn info circle" onClick={this.editBtnHandler} >Edit</div>
-                                    <div class="genric-btn danger circle">Delete</div>
-                                </td>
-                            </tr></tbody>
-                <div className="genric-btn primary circle">Create Account</div>
+    <tbody>{this.renderMemberList()}</tbody>
               </table>
               <Modal isOpen={this.state.modalOpen} className="edit-modal">
                 <ModalHeader toggleModal={this.toggleModal}>
