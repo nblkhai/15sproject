@@ -10,7 +10,7 @@ import Login from "./screen/Login/Login";
 import Package from "./screen/Package/Package";
 import Register from "./screen/Register/Register";
 import AdminDashboard from "../src/screen/Admin/Dashboard/AdminDashboard"
-import Members from "./screen/Admin/Members/Members";
+import Members from "../src/screen/Admin/Members/Members";
 import Cookie from "universal-cookie";
 import { userKeepLogin,cookieChecker } from "../src/redux/actions/user";
 import { connect } from "react-redux";
@@ -60,6 +60,7 @@ class App extends React.Component {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Register" component={Register} />
           <Route exact path="/package" component={Package} />
+          {this.renderAdminRoutes()}
         </Switch>
         <div style={{ height: "120px" }} />
       </>

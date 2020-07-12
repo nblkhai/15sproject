@@ -60,31 +60,31 @@ export const loginHandler = (userData) => {
 
 export const userKeepLogin = (userData) => {
   return (dispatch) => {
-    Axios.get(`${API_URL}/user`, {
+    Axios.get(`${API_URL}/user/id`, {
       params: {
         id: userData.id,
       },
     })
       .then((res) => {
-        if (res.data.length > 0) {
+        if (Object.keys(res.data).length > 0) {
           dispatch({
             type: ON_LOGIN_SUCCESS,
-            payload: res.data[0],
+            payload: res.data,
           });
-          Axios.get(`${API_URL}/carts`, {
-            params: {
-              userId: res.data[0].id,
-            },
-          })
-            .then((res) => {
-              dispatch({
-                type: "FILL_CART",
-                payload: res.data.length,
-              });
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          // Axios.get(`${API_URL}/carts`, {
+          //   params: {
+          //     userId: res.data[0].id,
+          //   },
+          // })
+          //   .then((res) => {
+          //     dispatch({
+          //       type: "FILL_CART",
+          //       payload: res.data.length,
+          //     });
+          //   })
+          //   .catch((err) => {
+          //     console.log(err);
+          //   });
         } else {
           dispatch({
             type: ON_LOGIN_FAIL,

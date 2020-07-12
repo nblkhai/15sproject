@@ -93,7 +93,12 @@ class Navbar extends React.Component {
                             Dashboard
                           </Link>
                         </DropdownItem>
-                        <DropdownItem>Members</DropdownItem>
+                        <DropdownItem> <Link
+                            style={{ color: "inherit", textDecoration: "none" }}
+                            to="/admin/members"
+                          >
+                            Members
+                          </Link></DropdownItem>
                         <DropdownItem>
                           <Link
                             style={{ color: "inherit", textDecoration: "none" }}
@@ -116,9 +121,9 @@ class Navbar extends React.Component {
                         <DropdownItem>
                           <Link
                             style={{ color: "inherit", textDecoration: "none" }}
-                            to="/wishlist"
+                            to="/edituser"
                           >
-                            Wishlist
+                            Change Password
                           </Link>
                         </DropdownItem>
                         <DropdownItem>

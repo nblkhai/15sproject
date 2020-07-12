@@ -2,7 +2,51 @@ import React from "react";
 import "./Package.css";
 import PhotoStudio from "../../assets/images/photo-studio.jpg";
 import PosterSatu from "../../assets/images/poster.jpg";
+import Axios from "axios";
+import { API_URL } from "../../constants/API";
+import ProductCard from "../../components/ProductCard/ProductCard";
 class Package extends React.Component {
+  state = {
+    productList: [],
+    productData: {
+      id: 0,
+      packageName: "",
+      packagePrice: 0,
+      packageLocation: "",
+      packageDuration: "",
+      packageDesc: "",
+      packageCategory: "",
+      packagePhotos: "",
+    },
+  };
+  getProductList = () => {
+    Axios.get(`${API_URL}/product/products`)
+      .then((res) => {
+        this.setState({ productList: res.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  componentDidMount() {
+    this.getProductList();
+    console.log(this.state.productList)
+  }
+  renderProducts = () => {
+    return this.state.productList.map((val) => {
+    
+        return(
+
+          <ProductCard
+            data={val}
+            className="m-2"
+          />
+   
+        )
+        
+      }
+    );
+  };
   render() {
     return (
       <div>
@@ -125,83 +169,8 @@ class Package extends React.Component {
               <div className="col-md-8">
                 <div className="product_list">
                   <div className="row">
-                    <div className="col-lg-6 col-sm-6">
-                      <div className="snip1396 green">
-                        <img src={PosterSatu} alt="pr-sample13" />
-                        <div className="image">
-                          <img src={PhotoStudio} alt="pr-sample13" />
-                        </div>
-                        <figcaption>
-                          <h3>PAKET A</h3>
-                          <p>Test</p>
-                        </figcaption>
-                        <div className="price">
-                          <s>$24.00</s>$19.00
-                        </div>
-                        <div className="add-to-cart">
-                          Add to Cart
-                          <i className="ion-android-checkbox-outline"></i>
-                        </div>
-                      </div>
+                    {this.renderProducts()}
                     </div>
-                    <div className="col-lg-6 col-sm-6">
-                      <div className="snip1396 green">
-                        <img src={PosterSatu} alt="pr-sample13" />
-                        <div className="image">
-                          <img src={PhotoStudio} alt="pr-sample13" />
-                        </div>
-                        <figcaption>
-                          <h3>PAKET A</h3>
-                          <p>Test</p>
-                        </figcaption>
-                        <div className="price">
-                          <s>$24.00</s>$19.00
-                        </div>
-                        <div className="add-to-cart">
-                          Add to Cart
-                          <i className="ion-android-checkbox-outline"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-sm-6">
-                      <div className="snip1396 green">
-                        <img src={PosterSatu} alt="pr-sample13" />
-                        <div className="image">
-                          <img src={PhotoStudio} alt="pr-sample13" />
-                        </div>
-                        <figcaption>
-                          <h3>PAKET A</h3>
-                          <p>Test</p>
-                        </figcaption>
-                        <div className="price">
-                          <s>$24.00</s>$19.00
-                        </div>
-                        <div className="add-to-cart">
-                          Add to Cart
-                          <i className="ion-android-checkbox-outline"></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-sm-6">
-                      <div className="snip1396 green">
-                        <img src={PosterSatu} alt="pr-sample13" />
-                        <div className="image">
-                          <img src={PhotoStudio} alt="pr-sample13" />
-                        </div>
-                        <figcaption>
-                          <h3>PAKET A</h3>
-                          <p>Test</p>
-                        </figcaption>
-                        <div className="price">
-                          <s>$24.00</s>$19.00
-                        </div>
-                        <div className="add-to-cart">
-                          Add to Cart
-                          <i className="ion-android-checkbox-outline"></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

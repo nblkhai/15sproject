@@ -57,7 +57,7 @@ class Members extends React.Component {
                                     <h5>08574213243</h5>
                                 </td>
                                 <td>
-                                    <div class="genric-btn info circle" >Edit</div>
+                                    <div class="genric-btn info circle" onClick={this.editBtnHandler} >Edit</div>
                                     <div class="genric-btn danger circle">Delete</div>
                                 </td>
                             </tr></tbody>
