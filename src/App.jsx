@@ -10,10 +10,14 @@ import Login from "./screen/Login/Login";
 import Package from "./screen/Package/Package";
 import Register from "./screen/Register/Register";
 import AdminDashboard from "../src/screen/Admin/Dashboard/AdminDashboard"
+import AdminPayment from "../src/screen/Admin/Payment Confirmation/AdminPayment"
 import Members from "../src/screen/Admin/Members/Members";
 import Cookie from "universal-cookie";
 import { userKeepLogin,cookieChecker } from "../src/redux/actions/user";
 import { connect } from "react-redux";
+import Cart from "./screen/User/Cart/Cart";
+import ProductDetails from "./screen/Product/ProductDetails";
+import AdminCategory from "./screen/Admin/Category/AdminCategory";
 
 const cookieObj = new Cookie();
 class App extends React.Component {
@@ -31,8 +35,9 @@ class App extends React.Component {
       return (
         <>
           <Route exact path="/admin/dashboard" component={AdminDashboard} />
-         
+          <Route exact path="/admin/payment" component={AdminPayment} />
           <Route exact path="/admin/members" component={Members} />
+          <Route exact path="/admin/category" component={AdminCategory} />
         </>
       );
     }
@@ -42,8 +47,9 @@ class App extends React.Component {
     if (this.props.user.id) {
       return (
         <>
- 
+         <Route exact path="/cart" component={Cart} />
           <Route exact path="/history" component={History} />
+          
    
         </>
       );
@@ -60,6 +66,11 @@ class App extends React.Component {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Register" component={Register} />
           <Route exact path="/package" component={Package} />
+          <Route
+              exact
+              path="/product/:productId"
+              component={ProductDetails}
+            />
           {this.renderAdminRoutes()}
         </Switch>
         <div style={{ height: "120px" }} />

@@ -41,6 +41,13 @@ class Navbar extends React.Component {
           </Link>
         </div>
         <div className="d-flex flex-row align-items-center">
+        <Link
+            to="/"
+            className="nav-link"
+            style={{ color: "white", textDecoration: "none" }}
+          >
+            <span>Home</span>
+          </Link>
           <Link
             to="/about"
             className="nav-link"
@@ -62,13 +69,7 @@ class Navbar extends React.Component {
           >
             <span>Our Package</span>
           </Link>
-          <Link
-            to="/contact"
-            className="nav-link"
-            style={{ color: "white", textDecoration: "none" }}
-          >
-            <span>Contact Us</span>
-          </Link>
+         
           <div className="d-flex flex-row align-items-center">
             {this.props.user.id ? (
               <>
@@ -91,6 +92,14 @@ class Navbar extends React.Component {
                             to="/admin/dashboard"
                           >
                             Dashboard
+                          </Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link
+                            style={{ color: "inherit", textDecoration: "none" }}
+                            to="/admin/category"
+                          >
+                            Category
                           </Link>
                         </DropdownItem>
                         <DropdownItem> <Link
@@ -118,6 +127,14 @@ class Navbar extends React.Component {
                       </>
                     ) : (
                       <>
+                        <DropdownItem>
+                          <Link
+                            style={{ color: "inherit", textDecoration: "none" }}
+                            to="/editprofile"
+                          >
+                            Edit Profile
+                          </Link>
+                        </DropdownItem>
                         <DropdownItem>
                           <Link
                             style={{ color: "inherit", textDecoration: "none" }}

@@ -10,6 +10,7 @@ import { API_URL } from "../../../constants/API";
 
 class AdminDashboard extends React.Component {
   state = {
+    categoryList:[],
     productList: [],
     createForm: {
       packageName: "",
@@ -46,7 +47,7 @@ class AdminDashboard extends React.Component {
             packageDuration: "",
             packageDesc: "",
             packageCategory: "",
-            packagePhotos: "",
+            
           },
         });
         this.getProductList();
@@ -64,7 +65,20 @@ class AdminDashboard extends React.Component {
       },
     });
   };
-
+  toggleModal = () => {
+    this.setState({ modalOpen: !this.state.modalOpen });
+  };
+  getCategoryList = () => {
+    Axios.get(`${API_URL}/category`)
+      .then((res) => {
+        this.setState({ categoryList: res.data });
+        console.log(res.data)
+        console.log(this.state.categoryList)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   getProductList = () => {
     Axios.get(`${API_URL}/product/products`)
       .then((res) => {
@@ -74,9 +88,21 @@ class AdminDashboard extends React.Component {
         console.log(err);
       });
   };
-
+  renderCategoryList = () => {
+    return this.state.categoryList.map((val,idx) => {
+        const{
+            id,categoryName
+        } = val
+        return(
+            <>
+            <option value={categoryName}>{categoryName}</option>
+            </>
+        )
+    })
+}
   componentDidMount() {
     this.getProductList();
+    this.getCategoryList()
     console.log(this.state.productList)
   }
   renderProductList = () => {
@@ -89,7 +115,7 @@ class AdminDashboard extends React.Component {
         packageDuration,
         packageDesc,
         packageCategory,
-        packagePhotos,
+   
       } = val;
       return (
         <>
@@ -109,9 +135,6 @@ class AdminDashboard extends React.Component {
             }}
           >
             <td> {id} </td>
-          <td>
-            <img style={{width:"200px"}} src={packagePhotos} alt=""/>
-          </td>
             <td> {packageName} </td>
             <td>
               {" "}
@@ -121,12 +144,12 @@ class AdminDashboard extends React.Component {
               }).format(packagePrice)}{" "}
             </td>
             <td>{packageLocation}</td>
-            <td>{packageDuration}</td>
+            <td>{packageDuration} Hours</td>
             <td>{packageDesc}</td>
             <td>{packageCategory}</td>
             <td>
               <div
-                className="list_package_edit.html"
+              onClick={this.editProductHandler}
                 className="genric-btn info circle"
               >
                 Edit
@@ -137,6 +160,22 @@ class AdminDashboard extends React.Component {
         </>
       );
     });
+  };
+
+  editProductHandler = () => {
+    Axios.put(
+      `${API_URL}/product/editProducts/${this.state.editForm.id}`,
+      this.state.editForm
+    )
+      .then((res) => {
+        swal("Success!", "Your item has been edited", "success");
+        this.setState({ modalOpen: false });
+        this.getProductList();
+      })
+      .catch((err) => {
+        swal("Error!", "Your item could not be edited", "error");
+        console.log(err);
+      });
   };
   render() {
     return (
@@ -153,17 +192,17 @@ class AdminDashboard extends React.Component {
                 <thead>
                   <tr>
                   <th scope="col">No</th>
-                    <th scope="col">Photo</th>
+         
                     <th scope="col">Package Name</th>
                     <th scope="col">Price / Hour</th>
                     <th scope="col">Location</th>
                     <th scope="col">Duration</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Category</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>{this.renderProductList()}</tbody>
-                <div className="genric-btn primary circle">Add Package</div>
               </table>
             </div>
           </div>
@@ -204,12 +243,10 @@ class AdminDashboard extends React.Component {
                 className="custom-text-input h-100 pl-3"
                 onChange={(e) => this.inputHandler(e, "packageCategory", "createForm")}
               >
-                <option value="Advertisement">Advertisement</option>
-                <option value="Short Movie">Short Movie</option>
-                <option value="Documenter">Documenter</option>
+               {this.renderCategoryList()}
               </select>
             </div>
-            <div className="col-6 mt-3">
+            <div className="col-3 mt-3">
               <select
                 value={this.state.createForm.packageDuration}
                 className="custom-text-input h-100 pl-3"
@@ -220,14 +257,7 @@ class AdminDashboard extends React.Component {
                 <option value="15 Hours">15 Hours</option>
               </select>
             </div>
-            <div className="col-6 mt-3">
-              <TextField
-                value={this.state.createForm.packagePhotos}
-                placeholder="Image Source"
-                onChange={(e) => this.inputHandler(e, "packagePhotos", "createForm")}
-              />
-            </div>
-            <div className="col-6 mt-3">
+            <div className="col-3 mt-3">
               <select
                 value={this.state.createForm.packageLocation}
                 className="custom-text-input h-100 pl-3"

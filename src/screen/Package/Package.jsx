@@ -4,6 +4,7 @@ import PhotoStudio from "../../assets/images/photo-studio.jpg";
 import PosterSatu from "../../assets/images/poster.jpg";
 import Axios from "axios";
 import { API_URL } from "../../constants/API";
+import { Link } from "react-router-dom";
 import ProductCard from "../../components/ProductCard/ProductCard";
 class Package extends React.Component {
   state = {
@@ -16,7 +17,6 @@ class Package extends React.Component {
       packageDuration: "",
       packageDesc: "",
       packageCategory: "",
-      packagePhotos: "",
     },
   };
   getProductList = () => {
@@ -30,22 +30,15 @@ class Package extends React.Component {
   };
   componentDidMount() {
     this.getProductList();
-    console.log(this.state.productList)
+    console.log(this.state.productList);
   }
   renderProducts = () => {
     return this.state.productList.map((val) => {
-    
-        return(
-
-          <ProductCard
-            data={val}
-            className="m-2"
-          />
-   
-        )
-        
-      }
-    );
+      return (
+          <ProductCard data={val} className="m-2" />
+  
+      );
+    });
   };
   render() {
     return (
@@ -168,9 +161,7 @@ class Package extends React.Component {
               </div>
               <div className="col-md-8">
                 <div className="product_list">
-                  <div className="row">
-                    {this.renderProducts()}
-                    </div>
+                  <div className="row">{this.renderProducts()}</div>
                 </div>
               </div>
             </div>
