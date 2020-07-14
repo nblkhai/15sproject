@@ -18,26 +18,82 @@ class Package extends React.Component {
       packageDesc: "",
       packageCategory: "",
     },
+    valLocation: "",
   };
+
+  inputHandler = (e) => {
+    const { value } = e.target;
+    this.setState({ categoryNow: value });
+  };
+
   getProductList = () => {
     Axios.get(`${API_URL}/product/products`)
       .then((res) => {
         this.setState({ productList: res.data });
+        this.renderProducts()
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  getProductListbyLocation = () => {
+    if (this.state.valLocation == "ALL") {
+        this.getProductList();
+    } else {
+      Axios.get(`${API_URL}/product/filterLocation`, {
+        params: {
+          location: this.state.valLocation,
+        },
+      })
+        .then((res) => {
+          this.setState({ productList: res.data });
+          console.log(res.data);
+          this.renderProducts();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  getProductListbyCategory = (valCategory) => {
+    Axios.get(`${API_URL}/product/filterCategory`, {
+      params: {
+        category: valCategory,
+      },
+    })
+      .then((res) => {
+        this.setState({ productList: res.data });
+        this.renderProducts();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  getProductListbyDuration = (valDuration) => {
+    Axios.get(`${API_URL}/product/filterDuration`, {
+      params: {
+        duration: valDuration,
+      },
+    })
+      .then((res) => {
+        this.setState({ productList: res.data });
+        this.renderProducts();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   componentDidMount() {
     this.getProductList();
     console.log(this.state.productList);
   }
   renderProducts = () => {
     return this.state.productList.map((val) => {
-      return (
-          <ProductCard data={val} className="m-2" />
-  
-      );
+      return <ProductCard data={val} className="m-2" />;
     });
   };
   render() {
@@ -73,6 +129,16 @@ class Package extends React.Component {
               <div className="col-md-4">
                 <div className="product_sidebar">
                   <div className="single_sedebar">
+                    <select
+                      onChange={(e) => {
+                        this.setState({ valLocation: e.target.value });
+                      }}
+                      onClick={() => this.getProductListbyLocation()}
+                    >
+                      <option value="ALL">ALL</option>
+                      <option value="Indoor">Indoor</option>
+                      <option value="Outdoor">Outdorr</option>
+                    </select>
                     <div className="dropdown">
                       <a
                         className="btn btn-secondary dropdown-toggle"

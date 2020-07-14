@@ -17,6 +17,7 @@ render(){
                             <th scope="col">No</th>
                                 <th scope="col">Nama Pemesan</th>
                                 <th scope="col">Package Name</th>
+                                <th scope="col">Booking Date</th>
                                 <th scope="col">Total Price</th>
                                 <th scope="col">Bukti Transfer</th>
                                 <th scope="col">Status</th>
@@ -37,6 +38,9 @@ render(){
                                             <p>PAKET A</p>
                                         </div>
                                     </div>
+                                </td>
+                                <td>
+                                    <h5>8-9-2020</h5>
                                 </td>
                                 <td>
                                     <h5>$360.00</h5>
@@ -68,6 +72,9 @@ render(){
                                             <p>PAKET A</p>
                                         </div>
                                     </div>
+                                </td>
+                                <td>
+                                    <h5>9-9-2020</h5>
                                 </td>
                                 <td>
                                     <h5>$360.00</h5>

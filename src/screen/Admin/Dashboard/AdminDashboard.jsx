@@ -10,7 +10,7 @@ import { API_URL } from "../../../constants/API";
 
 class AdminDashboard extends React.Component {
   state = {
-    categoryList:[],
+    categoryList: [],
     productList: [],
     createForm: {
       packageName: "",
@@ -35,7 +35,7 @@ class AdminDashboard extends React.Component {
     modalOpen: false,
   };
   createProductHandler = () => {
-    console.log(this.state.createForm)
+    console.log(this.state.createForm);
     Axios.post(`${API_URL}/product/addProduct`, this.state.createForm)
       .then((res) => {
         swal("Success!", "Your item has been added to the list", "success");
@@ -47,7 +47,6 @@ class AdminDashboard extends React.Component {
             packageDuration: "",
             packageDesc: "",
             packageCategory: "",
-            
           },
         });
         this.getProductList();
@@ -72,8 +71,8 @@ class AdminDashboard extends React.Component {
     Axios.get(`${API_URL}/category`)
       .then((res) => {
         this.setState({ categoryList: res.data });
-        console.log(res.data)
-        console.log(this.state.categoryList)
+        console.log(res.data);
+        console.log(this.state.categoryList);
       })
       .catch((err) => {
         console.log(err);
@@ -89,21 +88,30 @@ class AdminDashboard extends React.Component {
       });
   };
   renderCategoryList = () => {
-    return this.state.categoryList.map((val,idx) => {
-        const{
-            id,categoryName
-        } = val
-        return(
-            <>
-            <option value={categoryName}>{categoryName}</option>
-            </>
-        )
+    return this.state.categoryList.map((val, idx) => {
+      const { id, categoryName } = val;
+      return (
+        <>
+          <option value={categoryName}>{categoryName}</option>
+        </>
+      );
+    });
+  };
+  deleteBtnHandler = (productId) => {
+    Axios.delete(`${API_URL}/product/products/${productId}`)
+    .then((res) => {
+      console.log(res);
+      this.getProductList()
+      this.renderProductList()
     })
-}
+    .catch((err) => {
+      console.log(err);
+    });
+  }
   componentDidMount() {
     this.getProductList();
-    this.getCategoryList()
-    console.log(this.state.productList)
+    this.getCategoryList();
+    console.log(this.state.productList);
   }
   renderProductList = () => {
     return this.state.productList.map((val, idx) => {
@@ -115,7 +123,6 @@ class AdminDashboard extends React.Component {
         packageDuration,
         packageDesc,
         packageCategory,
-   
       } = val;
       return (
         <>
@@ -149,12 +156,13 @@ class AdminDashboard extends React.Component {
             <td>{packageCategory}</td>
             <td>
               <div
-              onClick={this.editProductHandler}
+                onClick={() => this.editProductHandler(id)}
                 className="genric-btn info circle"
               >
                 Edit
               </div>
-              <div className="genric-btn danger circle">Delete</div>
+              <div onClick={() => this.deleteBtnHandler(id)} 
+              className="genric-btn danger circle">Delete</div>
             </td>
           </tr>
         </>
@@ -162,18 +170,32 @@ class AdminDashboard extends React.Component {
     });
   };
 
-  editProductHandler = () => {
-    Axios.put(
-      `${API_URL}/product/editProducts/${this.state.editForm.id}`,
-      this.state.editForm
+  editProductHandler = (id) => {
+    Axios.get(
+      `${API_URL}/product/${id}`
     )
       .then((res) => {
-        swal("Success!", "Your item has been edited", "success");
-        this.setState({ modalOpen: false });
-        this.getProductList();
+        this.setState({ modalOpen: true });
+        // this.getProductList();
+        this.setState({createForm : res.data})
+
       })
       .catch((err) => {
-        swal("Error!", "Your item could not be edited", "error");
+        console.log(err);
+      });
+  };
+
+  saveProductBtnHandler = () => {
+    Axios.put(
+      `${API_URL}/product/editProducts`,this.state.createForm
+    )
+      .then((res) => {
+        this.setState({ modalOpen: false });
+        this.setState({createForm : res.data})
+        this.getProductList()
+
+      })
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -191,8 +213,8 @@ class AdminDashboard extends React.Component {
               <table className="table">
                 <thead>
                   <tr>
-                  <th scope="col">No</th>
-         
+                    <th scope="col">No</th>
+
                     <th scope="col">Package Name</th>
                     <th scope="col">Price / Hour</th>
                     <th scope="col">Location</th>
@@ -225,13 +247,17 @@ class AdminDashboard extends React.Component {
               <TextField
                 value={this.state.createForm.packagePrice}
                 placeholder="Price"
-                onChange={(e) => this.inputHandler(e, "packagePrice", "createForm")}
+                onChange={(e) =>
+                  this.inputHandler(e, "packagePrice", "createForm")
+                }
               />
             </div>
             <div className="col-12 mt-3">
               <textarea
                 value={this.state.createForm.packageDesc}
-                onChange={(e) => this.inputHandler(e, "packageDesc", "createForm")}
+                onChange={(e) =>
+                  this.inputHandler(e, "packageDesc", "createForm")
+                }
                 style={{ resize: "none" }}
                 placeholder="Description"
                 className="custom-text-input"
@@ -241,16 +267,20 @@ class AdminDashboard extends React.Component {
               <select
                 value={this.state.createForm.packageCategory}
                 className="custom-text-input h-100 pl-3"
-                onChange={(e) => this.inputHandler(e, "packageCategory", "createForm")}
+                onChange={(e) =>
+                  this.inputHandler(e, "packageCategory", "createForm")
+                }
               >
-               {this.renderCategoryList()}
+                {this.renderCategoryList()}
               </select>
             </div>
             <div className="col-3 mt-3">
               <select
                 value={this.state.createForm.packageDuration}
                 className="custom-text-input h-100 pl-3"
-                onChange={(e) => this.inputHandler(e, "packageDuration", "createForm")}
+                onChange={(e) =>
+                  this.inputHandler(e, "packageDuration", "createForm")
+                }
               >
                 <option value="5 Hours">5 Hours</option>
                 <option value="10 Hours">10 Hours</option>
@@ -261,7 +291,9 @@ class AdminDashboard extends React.Component {
               <select
                 value={this.state.createForm.packageLocation}
                 className="custom-text-input h-100 pl-3"
-                onChange={(e) => this.inputHandler(e, "packageLocation", "createForm")}
+                onChange={(e) =>
+                  this.inputHandler(e, "packageLocation", "createForm")
+                }
               >
                 <option value="Indoor">Indoor</option>
                 <option value="Outdoor">Outdoor</option>
@@ -287,69 +319,73 @@ class AdminDashboard extends React.Component {
           <ModalBody>
             <div className="row">
               <div className="col-8">
-              <TextField
-                value={this.state.createForm.packageName}
-                placeholder="Product Name"
-                onChange={(e) =>
-                  this.inputHandler(e, "packageName", "createForm")
-                }
-              />
-            </div>
-            <div className="col-4">
-              <TextField
-                value={this.state.createForm.packagePrice}
-                placeholder="Price"
-                onChange={(e) => this.inputHandler(e, "packagePrice", "createForm")}
-              />
-            </div>
-            <div className="col-12 mt-3">
-              <textarea
-                value={this.state.createForm.packageDesc}
-                onChange={(e) => this.inputHandler(e, "packageDesc", "createForm")}
-                style={{ resize: "none" }}
-                placeholder="Description"
-                className="custom-text-input"
-              ></textarea>
-            </div>
-            <div className="col-6 mt-3">
-              <select
-                value={this.state.createForm.packageCategory}
-                className="custom-text-input h-100 pl-3"
-                onChange={(e) => this.inputHandler(e, "packageCategory", "createForm")}
-              >
-                <option value="Advertisement">Advertisement</option>
-                <option value="Short Movie">Short Movie</option>
-                <option value="Documenter">Documenter</option>
-              </select>
-            </div>
-            <div className="col-6 mt-3">
-              <select
-                value={this.state.createForm.packageDuration}
-                className="custom-text-input h-100 pl-3"
-                onChange={(e) => this.inputHandler(e, "packageDuration", "createForm")}
-              >
-                <option value="5 Hours">5 Hours</option>
-                <option value="10 Hours">10 Hours</option>
-                <option value="15 Hours">15 Hours</option>
-              </select>
-            </div>
-            <div className="col-6">
-              <TextField
-                value={this.state.createForm.packagePhotos}
-                placeholder="Image Source"
-                onChange={(e) => this.inputHandler(e, "packagePhotos", "createForm")}
-              />
-            </div>
-            <div className="col-6 mt-3">
-              <select
-                value={this.state.createForm.packageLocation}
-                className="custom-text-input h-100 pl-3"
-                onChange={(e) => this.inputHandler(e, "packageLocation", "createForm")}
-              >
-                <option value="Indoor">Indoor</option>
-                <option value="Outdoor">Outdoor</option>
-              </select>
-            </div>
+                <TextField
+                  value={this.state.createForm.packageName}
+                  placeholder="Product Name"
+                  onChange={(e) =>
+                    this.inputHandler(e, "packageName", "createForm")
+                  }
+                />
+              </div>
+              <div className="col-4">
+                <TextField
+                  value={this.state.createForm.packagePrice}
+                  placeholder="Price"
+                  onChange={(e) =>
+                    this.inputHandler(e, "packagePrice", "createForm")
+                  }
+                />
+              </div>
+              <div className="col-12 mt-3">
+                <textarea
+                  value={this.state.createForm.packageDesc}
+                  onChange={(e) =>
+                    this.inputHandler(e, "packageDesc", "createForm")
+                  }
+                  style={{ resize: "none" }}
+                  placeholder="Description"
+                  className="custom-text-input"
+                ></textarea>
+              </div>
+              <div className="col-6 mt-3">
+                <select
+                  value={this.state.createForm.packageCategory}
+                  className="custom-text-input h-100 pl-3"
+                  onChange={(e) =>
+                    this.inputHandler(e, "packageCategory", "createForm")
+                  }
+                >
+                  <option value="Advertisement">Advertisement</option>
+                  <option value="Short Movie">Short Movie</option>
+                  <option value="Documenter">Documenter</option>
+                </select>
+              </div>
+              <div className="col-6 mt-3">
+                <select
+                  value={this.state.createForm.packageDuration}
+                  className="custom-text-input h-100 pl-3"
+                  onChange={(e) =>
+                    this.inputHandler(e, "packageDuration", "createForm")
+                  }
+                >
+                  <option value="5 Hours">5 Hours</option>
+                  <option value="10 Hours">10 Hours</option>
+                  <option value="15 Hours">15 Hours</option>
+                </select>
+              </div>
+
+              <div className="col-12 mt-3">
+                <select
+                  value={this.state.createForm.packageLocation}
+                  className="custom-text-input h-100 pl-3"
+                  onChange={(e) =>
+                    this.inputHandler(e, "packageLocation", "createForm")
+                  }
+                >
+                  <option value="Indoor">Indoor</option>
+                  <option value="Outdoor">Outdoor</option>
+                </select>
+              </div>
               <div className="col-5 mt-3 offset-1">
                 <ButtonUI
                   className="w-100"
@@ -362,7 +398,7 @@ class AdminDashboard extends React.Component {
               <div className="col-5 mt-3">
                 <ButtonUI
                   className="w-100"
-                  onClick={this.editProductHandler}
+                  onClick={this.saveProductBtnHandler}
                   type="contained"
                 >
                   Save
@@ -372,8 +408,6 @@ class AdminDashboard extends React.Component {
           </ModalBody>
         </Modal>
       </div>
-      
-      
     );
   }
 }

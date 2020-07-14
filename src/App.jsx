@@ -18,6 +18,7 @@ import { connect } from "react-redux";
 import Cart from "./screen/User/Cart/Cart";
 import ProductDetails from "./screen/Product/ProductDetails";
 import AdminCategory from "./screen/Admin/Category/AdminCategory";
+import ChangePassword from "./screen/User/Change Password/ChangePassword";
 
 const cookieObj = new Cookie();
 class App extends React.Component {
@@ -49,6 +50,7 @@ class App extends React.Component {
         <>
          <Route exact path="/cart" component={Cart} />
           <Route exact path="/history" component={History} />
+          <Route exact path="/changepassword" component={ChangePassword} />
           
    
         </>
@@ -72,6 +74,7 @@ class App extends React.Component {
               component={ProductDetails}
             />
           {this.renderAdminRoutes()}
+          {this.renderProtectedRoutes()}
         </Switch>
         <div style={{ height: "120px" }} />
       </>

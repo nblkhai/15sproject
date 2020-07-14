@@ -10,9 +10,9 @@ import {
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons/";
-import { faUser } from "@fortawesome/free-solid-svg-icons"
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import ButtonUI from "../Button/Button";
-import Logo from "../../assets/images/LogoBaru.png"
+import Logo from "../../assets/images/LogoBaru.png";
 import { logoutHandler } from "../../redux/actions/user";
 
 const CircleBg = ({ children }) => {
@@ -41,7 +41,7 @@ class Navbar extends React.Component {
           </Link>
         </div>
         <div className="d-flex flex-row align-items-center">
-        <Link
+          <Link
             to="/"
             className="nav-link"
             style={{ color: "white", textDecoration: "none" }}
@@ -69,7 +69,7 @@ class Navbar extends React.Component {
           >
             <span>Our Package</span>
           </Link>
-         
+
           <div className="d-flex flex-row align-items-center">
             {this.props.user.id ? (
               <>
@@ -102,16 +102,19 @@ class Navbar extends React.Component {
                             Category
                           </Link>
                         </DropdownItem>
-                        <DropdownItem> <Link
+                        <DropdownItem>
+                          {" "}
+                          <Link
                             style={{ color: "inherit", textDecoration: "none" }}
                             to="/admin/members"
                           >
                             Members
-                          </Link></DropdownItem>
+                          </Link>
+                        </DropdownItem>
                         <DropdownItem>
                           <Link
                             style={{ color: "inherit", textDecoration: "none" }}
-                            to="/admin/payments"
+                            to="/admin/payment"
                           >
                             Payments
                           </Link>
@@ -138,7 +141,7 @@ class Navbar extends React.Component {
                         <DropdownItem>
                           <Link
                             style={{ color: "inherit", textDecoration: "none" }}
-                            to="/edituser"
+                            to="/changepassword"
                           >
                             Change Password
                           </Link>
@@ -206,8 +209,7 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = {
-  onLogout: logoutHandler
-
+  onLogout: logoutHandler,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
