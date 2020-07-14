@@ -1,6 +1,8 @@
 import React from "react";
 import Axios from "axios";
+import { connect } from "react-redux";
 import { API_URL } from "../../../constants/API";
+import swal from "sweetalert"
 
 class ChangePassword extends React.Component {
   state = {
@@ -10,9 +12,10 @@ class ChangePassword extends React.Component {
       newPassword: "",
       confirmPassword: "",
     },
+    userData:{}
   };
 
-  changePasswordHandler = () => {
+  getUserData = () => {
     Axios.get(`${API_URL}/user/id`, {
       params: {
         id: this.props.user.id,
@@ -20,11 +23,47 @@ class ChangePassword extends React.Component {
     })
       .then((res) => {
         this.setState({ userData: res.data });
+        console.log(this.state.userData.password);
+        console.log(this.state.userData);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  componentDidMount() {
+    this.getUserData();
+  }
+  changePasswordHandler = () => {
+    Axios.get(`${API_URL}/user/checkOldPassword/${this.props.user.id}`, {
+      params: {
+        password: this.state.changePasswordForm.oldPassword,
+      },
+    })
+
+      .then((res) => {
+        console.log(res);
+        Axios.put(`${API_URL}/user/changePassword/${this.props.user.id}`, {
+          password: this.state.changePasswordForm.newPassword,
+          username: this.props.user.userName,
+          firstName: this.props.user.firstName,
+          lastName : this.props.user.lastName,
+          email: this.props.user.emailAddress,
+          phoneNumber: this.state.phoneNumber,
+          role: this.props.user.role,
+        })
+          .then((res) => {
+            console.log(res);
+            swal("success", "Your password successfully changed", "success");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        swal("error", "Wrong old password", "error");
+      });
+    }
   inputHandler = (e, field, form) => {
     console.log("Masuk");
     const { value } = e.target;
@@ -36,6 +75,9 @@ class ChangePassword extends React.Component {
     });
     console.log(e.target);
   };
+
+
+
   render() {
     return (
       <div className="container">
@@ -84,7 +126,7 @@ class ChangePassword extends React.Component {
                           />
                         </div>
                         <div className="col-md-12 form-group">
-                          <div className="btn_3" onClick={this.loginBtnHandler}>
+                          <div className="btn_3" onClick={this.changePasswordHandler}>
                             Change Password
                           </div>
                         </div>
@@ -100,4 +142,9 @@ class ChangePassword extends React.Component {
     );
   }
 }
-export default ChangePassword;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+export default connect(mapStateToProps) (ChangePassword);

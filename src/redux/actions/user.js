@@ -2,7 +2,7 @@
 import Axios from "axios";
 import userTypes from "../types/user";
 import Cookie from "universal-cookie";
-
+import swal from "sweetalert"
 const API_URL = `http://localhost:8080`
 const cookieObj = new Cookie();
 const {
@@ -16,6 +16,27 @@ const {
 export const cookieChecker = () => {
   return {
     type: "COOKIE_CHECK",
+  };
+};
+
+export const changePasswordHandler = (passwordData) => {
+  const { id, newPassword } = passwordData;
+  return (dispatch) => {
+    Axios.put(`${API_URL}/user/changePassword/${id}`, {
+      password: newPassword,
+    })
+      .then((res) => {
+        console.log(res.data);
+        dispatch({
+          type: ON_LOGIN_SUCCESS,
+          payload: res.data,
+        });
+        swal("Berhasil", "Password Has Been Changed", "success");
+      })
+      .catch((err) => {
+        console.log(err);
+        swal("Gagal", "Cannot Change Password", "error");
+      });
   };
 };
 
@@ -33,20 +54,7 @@ export const loginHandler = (userData) => {
           type: ON_LOGIN_SUCCESS,
           payload: res.data,
         });
-      //   Axios.get(`${API_URL}/carts`, {
-      //     params: {
-      //       userId: res.data.id,
-      //     },
-      //   })
-      //     .then((res) => {
-      //       dispatch({
-      //         type: "FILL_CART",
-      //         payload: res.data.length,
-      //       });
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
+
       })
       .catch((err) => {
         dispatch({

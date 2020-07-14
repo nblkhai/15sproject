@@ -97,6 +97,7 @@ class AdminDashboard extends React.Component {
       );
     });
   };
+  // Masih error
   deleteBtnHandler = (productId) => {
     Axios.delete(`${API_URL}/product/products/${productId}`)
     .then((res) => {
@@ -177,7 +178,7 @@ class AdminDashboard extends React.Component {
       .then((res) => {
         this.setState({ modalOpen: true });
         // this.getProductList();
-        this.setState({createForm : res.data})
+        this.setState({editForm : res.data})
 
       })
       .catch((err) => {
@@ -187,11 +188,11 @@ class AdminDashboard extends React.Component {
 
   saveProductBtnHandler = () => {
     Axios.put(
-      `${API_URL}/product/editProducts`,this.state.createForm
+      `${API_URL}/product/editProducts`,this.state.editForm
     )
       .then((res) => {
         this.setState({ modalOpen: false });
-        this.setState({createForm : res.data})
+        this.setState({editForm : res.data})
         this.getProductList()
 
       })
@@ -320,27 +321,27 @@ class AdminDashboard extends React.Component {
             <div className="row">
               <div className="col-8">
                 <TextField
-                  value={this.state.createForm.packageName}
+                  value={this.state.editForm.packageName}
                   placeholder="Product Name"
                   onChange={(e) =>
-                    this.inputHandler(e, "packageName", "createForm")
+                    this.inputHandler(e, "packageName", "editForm")
                   }
                 />
               </div>
               <div className="col-4">
                 <TextField
-                  value={this.state.createForm.packagePrice}
+                  value={this.state.editForm.packagePrice}
                   placeholder="Price"
                   onChange={(e) =>
-                    this.inputHandler(e, "packagePrice", "createForm")
+                    this.inputHandler(e, "packagePrice", "editForm")
                   }
                 />
               </div>
               <div className="col-12 mt-3">
                 <textarea
-                  value={this.state.createForm.packageDesc}
+                  value={this.state.editForm.packageDesc}
                   onChange={(e) =>
-                    this.inputHandler(e, "packageDesc", "createForm")
+                    this.inputHandler(e, "packageDesc", "editForm")
                   }
                   style={{ resize: "none" }}
                   placeholder="Description"
@@ -349,10 +350,10 @@ class AdminDashboard extends React.Component {
               </div>
               <div className="col-6 mt-3">
                 <select
-                  value={this.state.createForm.packageCategory}
+                  value={this.state.editForm.packageCategory}
                   className="custom-text-input h-100 pl-3"
                   onChange={(e) =>
-                    this.inputHandler(e, "packageCategory", "createForm")
+                    this.inputHandler(e, "packageCategory", "editForm")
                   }
                 >
                   <option value="Advertisement">Advertisement</option>
@@ -362,10 +363,10 @@ class AdminDashboard extends React.Component {
               </div>
               <div className="col-6 mt-3">
                 <select
-                  value={this.state.createForm.packageDuration}
+                  value={this.state.editForm.packageDuration}
                   className="custom-text-input h-100 pl-3"
                   onChange={(e) =>
-                    this.inputHandler(e, "packageDuration", "createForm")
+                    this.inputHandler(e, "packageDuration", "editForm")
                   }
                 >
                   <option value="5 Hours">5 Hours</option>
@@ -376,10 +377,10 @@ class AdminDashboard extends React.Component {
 
               <div className="col-12 mt-3">
                 <select
-                  value={this.state.createForm.packageLocation}
+                  value={this.state.editForm.packageLocation}
                   className="custom-text-input h-100 pl-3"
                   onChange={(e) =>
-                    this.inputHandler(e, "packageLocation", "createForm")
+                    this.inputHandler(e, "packageLocation", "editForm")
                   }
                 >
                   <option value="Indoor">Indoor</option>

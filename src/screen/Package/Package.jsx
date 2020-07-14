@@ -19,6 +19,7 @@ class Package extends React.Component {
       packageCategory: "",
     },
     valLocation: "",
+    valDuration:""
   };
 
   inputHandler = (e) => {
@@ -60,7 +61,7 @@ class Package extends React.Component {
   getProductListbyCategory = (valCategory) => {
     Axios.get(`${API_URL}/product/filterCategory`, {
       params: {
-        category: valCategory,
+        category: this.state.valCategory,
       },
     })
       .then((res) => {
@@ -73,19 +74,24 @@ class Package extends React.Component {
   };
 
   getProductListbyDuration = (valDuration) => {
+    if (this.state.valDuration == "ALL") {
+      this.getProductList();
+  } else {
     Axios.get(`${API_URL}/product/filterDuration`, {
       params: {
-        duration: valDuration,
+        duration: this.state.valDuration,
       },
     })
       .then((res) => {
         this.setState({ productList: res.data });
+        console.log(res.data);
         this.renderProducts();
       })
       .catch((err) => {
         console.log(err);
       });
-  };
+  }
+};
 
   componentDidMount() {
     this.getProductList();
@@ -139,62 +145,20 @@ class Package extends React.Component {
                       <option value="Indoor">Indoor</option>
                       <option value="Outdoor">Outdorr</option>
                     </select>
-                    <div className="dropdown">
-                      <a
-                        className="btn btn-secondary dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Tempat
-                      </a>
-                      <div
-                        className="dropdown-menu"
-                        aria-labelledby="dropdownMenuLink"
-                      >
-                        <a className="dropdown-item" href="#">
-                          Action
-                        </a>
-                        <a className="dropdown-item" href="#">
-                          Another action
-                        </a>
-                        <a className="dropdown-item" href="#">
-                          Something else here
-                        </a>
-                      </div>
-                    </div>
+                    
                   </div>
                   <div className="single_sedebar">
-                    <div className="dropdown">
-                      <a
-                        className="btn btn-secondary dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Durasi
-                      </a>
-                      <div
-                        className="dropdown-menu"
-                        aria-labelledby="dropdownMenuLink"
-                      >
-                        <a className="dropdown-item" href="#">
-                          Action
-                        </a>
-                        <a className="dropdown-item" href="#">
-                          Another action
-                        </a>
-                        <a className="dropdown-item" href="#">
-                          Something else here
-                        </a>
-                      </div>
-                    </div>
+                  <select
+                      onChange={(e) => {
+                        this.setState({ valDuration: e.target.value });
+                      }}
+                      onClick={() => this.getProductListbyDuration()}
+                    >
+                      <option value="ALL">ALL</option>
+                      <option value="5Hours">5 Hours</option>
+                      <option value="10Hours">10 Hours</option>
+                      <option value="15Hours">15 Hours</option>
+                    </select>
                   </div>
                   <div className="dropdown">
                     <a
