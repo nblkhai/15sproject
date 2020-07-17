@@ -152,7 +152,7 @@ class AdminDashboard extends React.Component {
               }).format(packagePrice)}{" "}
             </td>
             <td>{packageLocation}</td>
-            <td>{packageDuration} Hours</td>
+            <td>{packageDuration}</td>
             <td>{packageDesc}</td>
             <td>{packageCategory}</td>
             <td>

@@ -19,6 +19,8 @@ import Cart from "./screen/User/Cart/Cart";
 import ProductDetails from "./screen/Product/ProductDetails";
 import AdminCategory from "./screen/Admin/Category/AdminCategory";
 import ChangePassword from "./screen/User/Change Password/ChangePassword";
+import History from "../src/screen/User/History/History"
+import EditProfile from "./screen/User/Profile/EditProfile";
 
 const cookieObj = new Cookie();
 class App extends React.Component {
@@ -49,6 +51,7 @@ class App extends React.Component {
       return (
         <>
          <Route exact path="/cart" component={Cart} />
+         <Route exact path="/editProfile" component={EditProfile} />
           <Route exact path="/history" component={History} />
           <Route exact path="/changepassword" component={ChangePassword} />
           

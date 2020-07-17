@@ -1,9 +1,9 @@
 import React from "react";
-import "../Login/Login.css";
-import "../Home/Home.css"
+import { API_URL } from "../../../constants/API";
+import Axios from "axios";
 import { connect } from "react-redux";
 import Cookies from "universal-cookie";
-import {EditProfileHandler} from "../../redux/actions"
+// import {EditProfileHandler} from "../../redux/actions"
 
 
 class EditProfile extends React.Component {
@@ -11,12 +11,10 @@ class EditProfile extends React.Component {
     EditProfileForm: {
       firstName:"",
        lastName:"", 
-       userName:"", 
-       password:"", 
-       emailAddress:"",
        phoneNumber:"",
       showPassword: false,
     },
+    listProfile: [],
   };
   editProfileBtnHandler = () => {
     console.log("EditProfile")
@@ -43,7 +41,23 @@ class EditProfile extends React.Component {
     });
     console.log(e.target);
   };
+
+  getUserId = () => {
+    Axios.get(`${API_URL}/users/${this.props.user.id}`)
+      .then((res) => {
+        this.setState({
+          listProfile: res.data,
+        });
+        console.log(this.state.listProfile);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  
   componentDidUpdate() {
+    this.getUserId()
     if (this.props.user.id) {
       const cookie = new Cookies();
       cookie.set("authData", JSON.stringify(this.props.user), { path: "/" });
@@ -56,11 +70,10 @@ class EditProfile extends React.Component {
           <div className="row align-items-center">
             <div className="col-lg-6 col-md-6">
               <div className="login_part_form">
-                <div className="login_part_form_iner">
-                  <h3>Edit</h3>
+                <div className="login_part_form_iner mt-5">
+                  <h3>Edit Profile</h3>
                   <form
                     className="row contact_form"
-                    action="#"
                     method="post"
                     novalidate="novalidate"
                   >
@@ -89,6 +102,7 @@ class EditProfile extends React.Component {
                       <input
                         type="text"
                         className="form-control"
+                        disabled
                         value={this.state.EditProfileForm.userName}
                         placeholder="Username"
                         onChange={(e) => this.inputHandler(e, "userName","EditProfileForm")}
@@ -99,7 +113,7 @@ class EditProfile extends React.Component {
                       <input
                         type="password"
                         className="form-control"
-                       
+                       disabled
                         value={this.state.EditProfileForm.password}
                         placeholder="Password"
                         onChange={(e) => this.inputHandler(e, "password","EditProfileForm")}
@@ -110,7 +124,7 @@ class EditProfile extends React.Component {
                       <input
                         type="text"
                         className="form-control"
-                       
+                        disabled
                         value={this.state.EditProfileForm.em}
                         placeholder="Email"
                         onChange={(e) => this.inputHandler(e, "emailAddress","EditProfileForm")}
@@ -128,8 +142,8 @@ class EditProfile extends React.Component {
                       />
                     </div>
                     <div className="col-md-12 form-group">
-                      <div className="btn_3" onClick={this.editProfileBtnHandler}>
-                        Create an Account
+                      <div className="btn_3">
+                        Edit Profile
                       </div>
                     </div>
                   </form>

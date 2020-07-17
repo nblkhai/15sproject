@@ -18,8 +18,8 @@ class Package extends React.Component {
       packageDesc: "",
       packageCategory: "",
     },
-    valLocation: "",
-    valDuration:""
+    valLocation: "ALL",
+    valDuration:"ALL"
   };
 
   inputHandler = (e) => {
@@ -59,18 +59,23 @@ class Package extends React.Component {
   };
 
   getProductListbyCategory = (valCategory) => {
-    Axios.get(`${API_URL}/product/filterCategory`, {
-      params: {
-        category: this.state.valCategory,
-      },
-    })
-      .then((res) => {
-        this.setState({ productList: res.data });
-        this.renderProducts();
+    if (this.state.valCategory == "ALL"){
+      this.getProductList()
+    } else {
+
+      Axios.get(`${API_URL}/product/filterCategory`, {
+        params: {
+          category: this.state.valCategory,
+        },
       })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((res) => {
+          this.setState({ productList: res.data });
+          this.renderProducts();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   getProductListbyDuration = (valDuration) => {

@@ -25,9 +25,10 @@ class ProductCard extends React.Component<ProductCardProps> {
   render() {
     
       return(
-        <Link to={`/product/${this.props.data.id}`}>
+       
         
         <div className="col-lg-6 col-sm-6">
+           <Link to={`/product/${this.props.data.id} ` } style={{display:"block"}}>
         <div className="snip1396 green">
           <img src={PosterSatu} alt="pr-sample13" />
           <div className="image" >
@@ -46,8 +47,8 @@ class ProductCard extends React.Component<ProductCardProps> {
             <i className="ion-android-checkbox-outline"></i>
           </div>
         </div>
+        </Link>
       </div>
-      </Link>
       )
   }
 }

@@ -33,8 +33,11 @@ class ProductDetails extends React.Component {
         console.log(err);
       });
     this.getCartList();
+
   }
 
+
+  
   getCartList = () => {
     Axios.get(`${API_URL}/cart`)
       .then((res) => {
@@ -80,6 +83,7 @@ class ProductDetails extends React.Component {
             });
          
         }
+
       });
     }
   };

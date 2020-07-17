@@ -7,6 +7,7 @@ import PosterSatu from "../../assets/images/poster.jpg";
 import PosterDua from "../../assets/images/posterr.jpg";
 import PosterTiga from "../../assets/images/poster(1).jpg";
 import ButtonUI from "../../components/Button/Button";
+import LogoBaru from "../../assets/images/LogoBaru.png"
 const dummy = [
   {
     image: PosterSatu,
@@ -108,9 +109,8 @@ class Home extends React.Component {
                             <div className="row align-items-center justify-content-between">
                                 <div className="col-lg-6 col-sm-6">
                                     <div className="single_product_img">
-                                        <img src="asset/img/LogoBaru.png" className="img-fluid" alt="#"/>
-                                        <img src="asset/img/product_overlay.png" alt="#"
-                                            className="product_overlay img-fluid"/>
+                                        <img src={LogoBaru} className="img-fluid"/>
+                                           
                                     </div>
                                 </div>
                                 <div className="col-lg-5 col-sm-6">
@@ -246,7 +246,7 @@ class Home extends React.Component {
                 <div className="text-center mt-3">
                         <div className="btn_3"><Link
                     style={{ textDecoration: "none", color: "inherit" }}
-                    to="/about"
+                    to="/package"
                   >
                   See All Package
                   </Link></div>
