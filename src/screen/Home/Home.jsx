@@ -174,7 +174,7 @@ class Home extends React.Component {
                         <div className="text-center mt-3">
                         <div className="btn_3"><Link
                     style={{ textDecoration: "none", color: "inherit" }}
-                    to="/about"
+                    to="/portfolio"
                   >
                    Views More
                   </Link></div>

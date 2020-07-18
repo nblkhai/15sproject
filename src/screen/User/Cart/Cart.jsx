@@ -10,16 +10,19 @@ class Cart extends React.Component {
     cartList: [],
     totalPrice: 0,
     statusPayment:false,
-    datePay : new Date()
+    datePay : new Date(),
+    dateBooking : new Date()
   };
   getCartList = () => {
     let totalPriceItems = 0 ;
     Axios.get(`${API_URL}/cart/user/${this.props.user.id}`)
       .then((res) => {
         this.setState({ cartList: res.data });
+        
         console.log(res.data);
         res.data.map((val) => {
           totalPriceItems += val.products.packageDuration * val.products.packagePrice;
+          this.setState({dateBooking: val.dateBooking})
         })
         this.setState({
           totalPrice : totalPriceItems
@@ -107,6 +110,7 @@ class Cart extends React.Component {
     Axios.get(`${API_URL}/cart/user/${this.props.user.id}`)
       .then((res) => {
         console.log(res.data);
+        console.log(this.state.dateBooking)
         res.data.map(val => {
           Axios.delete(`${API_URL}/cart/${val.id}`)
             .then((res) => {
@@ -121,8 +125,8 @@ class Cart extends React.Component {
         Axios.post(`${API_URL}/transactions/addTransaction/${this.props.user.id}`, {
           totalPrice: this.state.totalPrice,
           statusPayment: false,
-          transactionDate: this.state.datePay.toLocaleDateString(),
-
+          trasactionDate: this.state.datePay.toLocaleDateString(),
+          dateBooking: this.state.dateBooking
         })
           .then((res) => {
             this.state.cartList.map(val => {

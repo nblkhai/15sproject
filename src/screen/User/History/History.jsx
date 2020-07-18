@@ -2,131 +2,191 @@ import React from "react";
 import Axios from "axios";
 import { API_URL } from "../../../constants/API";
 import { connect } from "react-redux";
+import "../History/History.css"
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
 
-class History extends React.Component{
-    state={
-        historyList:[],
-        status:false,
-        modalOpen: false,
-    }
+class History extends React.Component {
 
-    gethistoryList = (val) => {
-        // let totalPriceItems = 0 ;
-        Axios.get(`${API_URL}/transactions/user/${this.props.user.id}?statusPayment=${val}`)
-          .then((res) => {
-              
-            this.setState({ historyList: res.data , status:val});
-            console.log(res.data);
-            // res.data.map((val) => {
-            //   totalPriceItems += val.products.packageDuration * val.products.packagePrice;
-            // })
-            // this.setState({
-            //   totalPrice : totalPriceItems
-            // })
-          })
-          .catch((err) => {
-            alert("Pending")
-            console.log(err);
-          });
-      };
-      componentDidMount() {
-        this.gethistoryList(this.state.status);
-      }
+  state = {
+    modalOpen: false,
+    historyList: [],
+    active:[],
+    selectedFile: null,
+    status:false,
+    transactionId: null,
+  };
+  toggleModal = () => {
+    this.setState({ modalOpen: !this.state.modalOpen });
+  };
 
-      renderHistoryList = () => {
-        return this.state.historyList.map((val, idx) => {
-          const { id, totalPrice, statusPayment , transansactionDetails} = val;
-          return (
-            <>
-                {transansactionDetails.map((val,index) => {
-                    return (
-                      <tr>
-                        {/* <td>{val.products.idx}</td> */}
-                    <td>{index + 1}</td>
-                        <td>{val.products.packageName}</td>
-                        <td>{val.products.packagePrice}</td>
-                        <td>{val.products.packageLocation}</td>
-                        <td>{val.products.packageDuration} Hours</td>
-                        <td>{val.products.packageDesc}</td>  
-                        <td>{val.products.packageCategory}</td>
-                        <td>{val.products.dateBooking}</td>   
-                        <td>{val.products.totalPrice}</td>   
-                        <div
-              className="genric-btn primary circle mb-3 mt-2"
-            >
-         Upload Bukti Transfer
-            </div>             
-             </tr>
-                    )
-                })}
-                {/* <td>
-                  {" "}
-                  {new Intl.NumberFormat("id-ID", {
-                    style: "currency",
-                    currency: "IDR",
-                  }).format(products.packagePrice)}{" "}
-                </td> */}
-                {/* <td>{products.packageLocation}</td>
-                <td>{products.packageDuration}</td>
-                <td>{products.packageDesc}</td>
-                <td>{products.packageCategory}</td>
-                <td>{dateBooking}</td>
-                <td>{totalPrice}</td> */}
-                {/* <div className="btn_3 ml-4 " onClick={() => this.gethistoryList("pending")}>Upload Bukti Transfer</div> */}
-              
-            </>
-          );
-        });
-      };
-    
-    render() {
-        return (
-          <div classNamw="cart_area section_padding">
-            <div className="text-center tokolapak-heading">
-              <h2>
-                <span>User History</span>
-              </h2>
-            </div>
-            <div classNamw="container">
-            <div className="d-flex justify-content-center mb-3">
-            <div className="btn_3 ml-4">Pending</div>
-            <div className="btn_3 ml-4">Success</div>
-            <div className="btn_3 ml-4">Reject</div>
-            </div>
-              <div className="cart_inner">
-                <div className="table-responsive">
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">No</th>
-    
-                        <th scope="col">Package Name</th>
-                        <th scope="col">Price / Hour</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Duration</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Booking Date</th>
-                         <th scope="col">Total Price </th>
+  uploadHanlder = (transactionId) => {
+    this.setState({ 
+      modalOpen: true,
+      transactionId:transactionId,
+     });
+  };
 
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>{this.renderHistoryList()}</tbody>
-                  </table>
-                </div>
-              </div>
+  fileChangedHandler = (e) => {
+    this.setState({ selectedFile: e.target.files[0] })
+}
+
+  uploadBuktiTrasfer = (transactionId) => {  
+    let formData = new FormData();
+    formData.append(
+      "file",
+      this.state.selectedFile,
+      this.state.selectedFile.name
+    );
+    console.log(this.state.selectedFile.name);
+
+    Axios.put(
+      `${API_URL}/transactions/uploadBuktiTransfer/${transactionId}`,
+      formData
+    )
+      .then((res) => {
+        alert("masuk")
+        console.log(res.data);
+        this.toggleModal();
+        this.gethistoryList();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  gethistoryList = (val) => {
+    Axios.get(
+      `${API_URL}/transactions/user/${this.props.user.id}?statusPayment=${val}`
+    )
+      .then((res) => {
+        this.setState({ historyList: res.data, status: val });
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  componentDidMount() {
+    this.gethistoryList(this.state.status);
+  }
+
+  renderHistoyList = () => {
+    return this.state.historyList.map((val, idx) => {
+      const { id, totalPrice, statusPayment, transansactionDetails } = val;
+      return (
+        <>
+          <tr
+            onClick={() => {
+              if (this.state.active.includes(idx)) {
+                this.setState({
+                  active: [...this.state.active.filter((item) => item !== idx)],
+                });
+              } else {
+                this.setState({
+                  active: [...this.state.active, idx],
+                });
+              }
+            }}
+          >
+            <td>{idx + 1}</td>
+            <td>
+              {new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              }).format(totalPrice)}{" "}
+            </td>
+            {val.buktiTransfer ? (
+              (val.statusPayment == true ? (
+                <td>Thank You!</td>
+              ) : (
+                <td>Wait for Admin Respon</td>
+              ))
+            ) : (
+              <td>
+                <input type="button" onClick={(e) => this.uploadHanlder(val.id)}  className="btn_3" value="Upload Foto" />
+              </td>
+            )}
+          </tr>
+          {transansactionDetails.map((val) => {
+            return (
+              <tr
+                className={`collapse-item ${
+                  this.state.active.includes(idx) ? "active" : null
+                }`}
+              >
+                <td className="" colSpan={5}>
+                  <div className="d-flex flex-column ml-4 justify-content-center">
+                    <h5> Package Name : 
+                      <span style={{ fontWeight: "normal" }} >{val.products.packageName}
+                        </span ></h5>
+                    <h5> Package Duration:  <span style={{ fontWeight: "normal" }} >{val.products.packageDuration}
+                        </span ></h5>
+                    <h5> Package Description :<span style={{ fontWeight: "normal" }} > {val.products.packageDesc}
+                        </span ></h5>
+                    <h5>Package Category :<span style={{ fontWeight: "normal" }} > {val.products.packageCategory}
+                        </span ></h5>
+              <h5> Date Booking : <span style={{ fontWeight: "normal" }} > {val.products.dateBooking}
+                        </span ></h5>
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </>
+      );
+    });
+  };
+  render() {
+    return (
+      <div className="container">
+        <div className="cart_area section_padding">
+          <div className="text-center tokolapak-heading">
+            <h2>
+              <span>User History</span>
+            </h2>
+          </div>
+          <div className="cart_inner">
+            <div className="table-responsive">
+              <table className="table">
+                <thead>
+                  <tr>
+                    {/* <th scope="col">No</th> */}
+
+                    <th scope="col">No</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+    <tbody>{this.renderHistoyList()}</tbody>
+              </table>
+              <Modal
+                        toggle={this.toggleModal}
+                        isOpen={this.state.modalOpen}>
+                        <ModalHeader toggle={this.toggleModal}>
+                            <caption>
+                                <h3>Upload Bukti Transfer</h3>
+                            </caption>
+                        </ModalHeader>
+                        <ModalBody>
+                            <input type="file" onChange={this.fileChangedHandler} />
+                            <input type="button" onClick={() => this.uploadBuktiTrasfer(this.state.transactionId)} className="upload-btn" value="Upload" />
+                            <br />
+                            <br />
+                            <input type="button" onClick={this.toggleModal} className="upload-btn" value="Cancel" />
+                        </ModalBody>
+                    </Modal>
             </div>
-            </div>
-        )
-    }           
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => {
-    return {
-      user: state.user,
-    };
+  return {
+    user: state.user,
   };
-  
-  export default connect(mapStateToProps)(History);
-  
+};
+
+export default connect(mapStateToProps)(History);
