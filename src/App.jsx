@@ -21,6 +21,7 @@ import AdminCategory from "./screen/Admin/Category/AdminCategory";
 import ChangePassword from "./screen/User/Change Password/ChangePassword";
 import History from "../src/screen/User/History/History"
 import EditProfile from "./screen/User/Profile/EditProfile";
+import AdminReport from "./screen/Admin/Report/AdminReport";
 
 const cookieObj = new Cookie();
 class App extends React.Component {
@@ -41,6 +42,7 @@ class App extends React.Component {
           <Route exact path="/admin/payment" component={AdminPayment} />
           <Route exact path="/admin/members" component={Members} />
           <Route exact path="/admin/category" component={AdminCategory} />
+          <Route exact path="/admin/report" component={AdminReport}/>
         </>
       );
     }

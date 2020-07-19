@@ -19,7 +19,7 @@ class Register extends React.Component {
     },
   };
   registerBtnHandler = () => {
-    console.log("register")
+
     const {firstName, lastName, userName, password, emailAddress,phoneNumber } = this.state.registerForm;
     let newUser = {
       firstName, 

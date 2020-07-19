@@ -23,6 +23,7 @@ class Cart extends React.Component {
         res.data.map((val) => {
           totalPriceItems += val.products.packageDuration * val.products.packagePrice;
           this.setState({dateBooking: val.dateBooking})
+          console.log(totalPriceItems)
         })
         this.setState({
           totalPrice : totalPriceItems
@@ -52,7 +53,7 @@ class Cart extends React.Component {
       return (
         <>
           <tr>
-            <td> {id} </td>
+            <td> {idx + 1} </td>
             <td> {products.packageName} </td>
             <td>
               {" "}
@@ -85,7 +86,7 @@ class Cart extends React.Component {
       return (
         <>
           <tr>
-            <td> {id} </td>
+            <td> {idx+1} </td>
             <td> {products.packageName} </td>
             <td>
               {" "}
@@ -100,7 +101,6 @@ class Cart extends React.Component {
             <td>{products.packageCategory}</td>
             <td>{dateBooking}</td>
           </tr>
-          <h3>Total Price : {totalPriceItems}</h3>
         </>
       );
     });
@@ -210,6 +210,8 @@ class Cart extends React.Component {
                   </tr>
                 </thead>
                 <tbody>{this.renderCartListPayment()}</tbody>
+          <h3>Total Price : {this.state.totalPrice}</h3>
+
 
                 <div class="btn_3" onClick={() => this.confirmBtn()}>Check Out</div>
               </table>

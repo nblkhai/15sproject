@@ -283,9 +283,9 @@ class AdminDashboard extends React.Component {
                   this.inputHandler(e, "packageDuration", "createForm")
                 }
               >
-                <option value="5 Hours">5 Hours</option>
-                <option value="10 Hours">10 Hours</option>
-                <option value="15 Hours">15 Hours</option>
+                <option value="5">5 Hours</option>
+                <option value="10">10 Hours</option>
+                <option value="15">15 Hours</option>
               </select>
             </div>
             <div className="col-3 mt-3">

@@ -1,5 +1,6 @@
 import React from "react";
 import swal from "sweetalert";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import ButtonUI from "../../../components/Button/Button";
 import TextField from "../../../components/TextField/TextField";
 import Axios from "axios";
@@ -9,8 +10,18 @@ class AdminCategory extends React.Component{
         categoryList:[],
         categoryForm: {
             categoryName:""
-        }
+        },
+        editCategoryForm:{
+          id:0,
+          categoryName:""
+        },
+        modalOpen:false
     }
+
+    toggleModal = () => {
+      this.setState({ modalOpen: !this.state.modalOpen })
+    }
+
     inputHandler = (e, field, form) => {
         let { value } = e.target;
         this.setState({
@@ -47,11 +58,51 @@ class AdminCategory extends React.Component{
             console.log(err);
           });
       };
+
+      editProductHandler = (id) => {
+        Axios.get(
+          `${API_URL}/category/${id}`
+        )
+          .then((res) => {
+            this.setState({ modalOpen: true });
+            this.setState({editCategoryForm : res.data})
+    
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
       componentDidMount() {
         this.getCategoryList();
         console.log(this.state.categoryList)
       }
 
+      saveProductBtnHandler = (categoryId) => {
+        Axios.put(
+          `${API_URL}/category/editCategory/${categoryId}`,this.state.editCategoryForm
+        )
+          .then((res) => {
+            this.setState({ modalOpen: false });
+            this.setState({editCategoryForm : res.data})
+            this.getCategoryList()
+    
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+
+      deleteBtnHandler = (categoryId) => {
+        Axios.delete(`${API_URL}/category/deleteCategory/${categoryId}`)
+        .then((res) => {
+          console.log(res);
+          this.getCategoryList()
+          this.renderCategoryList()
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }
       renderCategoryList = () => {
           return this.state.categoryList.map((val,idx) => {
               const{
@@ -66,10 +117,11 @@ class AdminCategory extends React.Component{
               <div
                 className="list_package_edit.html"
                 className="genric-btn info circle"
+                onClick={() => this.editProductHandler(id)}
               >
                 Edit
               </div>
-              <div className="genric-btn danger circle">Delete</div>
+              <div className="genric-btn danger circle"  onClick={() => this.deleteBtnHandler(id)}>Delete</div>
             </td>
                   </tr>
                   </>
@@ -129,6 +181,50 @@ render () {
          </div>
 
      </div>
+     <Modal  toggle={this.toggleModal}
+          isOpen={this.state.modalOpen}
+          className="edit-modal">
+<ModalHeader toggle={this.toggleModal}>
+            <caption>
+              <h3>Edit Category</h3>
+            </caption>
+          </ModalHeader>
+          <ModalBody>
+            <div className="row">
+              <div className="col-8">
+              <TextField
+                  value={this.state.editCategoryForm.categoryName}
+                  placeholder="Category Name"
+                  onChange={(e) =>
+                    this.inputHandler(e, "categoryName", "editCategoryForm")
+                  }
+                />
+              </div>
+
+            </div>
+            <div className="row">
+            <div className="col-5 mt-3">
+                <ButtonUI
+                  className="w-100"
+                  onClick={this.saveProductBtnHandler}
+                  type="contained"
+                >
+                  Save
+                </ButtonUI>
+              </div>
+            <div className="col-5 mt-3">
+                <ButtonUI
+                  className="w-100"
+                  onClick={this.toggleModal}
+                  type="outlined"
+                >
+                  Cancel
+                </ButtonUI>
+              </div>
+             
+            </div>
+          </ModalBody>
+     </Modal>
 
  </div>
         </div>

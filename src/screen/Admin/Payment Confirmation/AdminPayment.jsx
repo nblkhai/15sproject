@@ -1,5 +1,4 @@
 import React from "react";
-import ButtonUI from "../../../components/Button/Button";
 import Axios from "axios";
 import { API_URL } from "../../../constants/API";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
@@ -49,6 +48,9 @@ class AdminPayment extends React.Component {
         console.log(res.data);
         this.toggleModal();
         this.getAllTransaction();
+        // this.state.transactionList[this.state.index].transansactionDetails,map(val => {
+
+        // })
       })
       .catch((err) => {
         console.log(err);
@@ -145,14 +147,14 @@ class AdminPayment extends React.Component {
                         {val.products.packageCategory}
                       </span>
                     </h5>
-                    <h5>
+                    {/* <h5>
                       {" "}
                       Date Booking :{" "}
                       <span style={{ fontWeight: "normal" }}>
                         {" "}
-                        {val.products.dateBooking}
+                        {val.dateBooking}
                       </span>
-                    </h5>
+                    </h5> */}
                   </div>
                 </td>
               </tr>
@@ -170,8 +172,8 @@ class AdminPayment extends React.Component {
                 
               </div>
               <div>
-                {this.state.transactionList.status == "Accept" ? (
-                  <h4>Proses transaksi selesai</h4>
+                {val.statusPayment== 1 ? (
+                  <h4>Transaksi Selesai</h4>
                 ) : (
                   <>
                     <input
@@ -219,7 +221,6 @@ class AdminPayment extends React.Component {
                     <th scope="col">No</th>
                     <th scope="col">User Name </th>
                     <th scope="col">Total Price</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>

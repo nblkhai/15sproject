@@ -6,7 +6,6 @@ import "./Home.css"
 import PosterSatu from "../../assets/images/poster.jpg";
 import PosterDua from "../../assets/images/posterr.jpg";
 import PosterTiga from "../../assets/images/poster(1).jpg";
-import ButtonUI from "../../components/Button/Button";
 import LogoBaru from "../../assets/images/LogoBaru.png"
 const dummy = [
   {
@@ -192,57 +191,12 @@ class Home extends React.Component {
                         <div className="text-center tokolapak-heading">
                             <h2><span>Our Package</span></h2>
                             <h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel cum cumque ipsam hic
-                                    harum. Facere, iste ab, natus non magnam cumque quibusdam esse quae numquam dolorum
-                                    beatae vitae ea aut!</p>
+                                <p>Check Our Package!</p>
                             </h5>
                         </div>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-lg-4 col-sm-6">
-                        <div className="single_product_item">
-                            <img src={PosterSatu} alt="#" className="img-fluid"/>
-                            <h3> <a href="single-product.html">Paket A</a> </h3>
-                            <p>Penjelasan Paket Ditaro Disini YA</p>
-                        </div>
-                    </div>
-                    <div className="col-lg-4 col-sm-6">
-                        <div className="single_product_item">
-                            <img src={PosterSatu} alt="#" className="img-fluid"/>
-                            <h3> <a href="single-product.html">Paket B</a> </h3>
-                            <p>Penjelasan Paket Ditaro Disini YA</p>
-                        </div>
-                    </div>
-                    <div className="col-lg-4 col-sm-6">
-                        <div className="single_product_item">
-                            <img src={PosterSatu} alt="#" className="img-fluid"/>
-                            <h3> <a href="single-product.html">Paket C</a> </h3>
-                            <p>Penjelasan Paket Ditaro Disini YA</p>
-                        </div>
-                    </div>
-                    <div className="col-lg-4 col-sm-6">
-                        <div className="single_product_item">
-                            <img src={PosterSatu} alt="#" className="img-fluid"/>
-                            <h3> <a href="single-product.html">Paket D</a> </h3>
-                            <p>Penjelasan Paket Ditaro Disini YA</p>
-                        </div>
-                    </div>
-                    <div className="col-lg-4 col-sm-6">
-                        <div className="single_product_item">
-                            <img src={PosterSatu} alt="#" className="img-fluid"/>
-                            <h3> <a href="single-product.html">Paket E</a> </h3>
-                            <p>Penjelasan Paket Ditaro Disini YA</p>
-                        </div>
-                    </div>
-                    <div className="col-lg-4 col-sm-6">
-                        <div className="single_product_item">
-                            <img src={PosterSatu} alt="#" className="img-fluid"/>
-                            <h3> <a href="single-product.html">Paket F</a> </h3>
-                            <p>Penjelasan Paket Ditaro Disini YA</p>
-                        </div>
-                    </div>
-                </div>
+
                 <div className="text-center mt-3">
                         <div className="btn_3"><Link
                     style={{ textDecoration: "none", color: "inherit" }}

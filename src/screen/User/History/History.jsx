@@ -53,12 +53,12 @@ class History extends React.Component {
         console.log(err);
       });
   };
-  gethistoryList = (val) => {
+  gethistoryList = () => {
     Axios.get(
-      `${API_URL}/transactions/user/${this.props.user.id}?statusPayment=${val}`
+      `${API_URL}/transactions/user/${this.props.user.id}`
     )
       .then((res) => {
-        this.setState({ historyList: res.data, status: val });
+        this.setState({ historyList: res.data });
         console.log(res.data);
       })
       .catch((err) => {
@@ -66,12 +66,12 @@ class History extends React.Component {
       });
   };
   componentDidMount() {
-    this.gethistoryList(this.state.status);
+    this.gethistoryList();
   }
 
   renderHistoyList = () => {
     return this.state.historyList.map((val, idx) => {
-      const { id, totalPrice, statusPayment, transansactionDetails } = val;
+      const { id, totalPrice, statusPayment, transansactionDetails ,dateBooking} = val;
       return (
         <>
           <tr
@@ -95,7 +95,7 @@ class History extends React.Component {
               }).format(totalPrice)}{" "}
             </td>
             {val.buktiTransfer ? (
-              (val.statusPayment == true ? (
+              (val.statusPayment == 1 ? (
                 <td>Thank You!</td>
               ) : (
                 <td>Wait for Admin Respon</td>
@@ -124,7 +124,7 @@ class History extends React.Component {
                         </span ></h5>
                     <h5>Package Category :<span style={{ fontWeight: "normal" }} > {val.products.packageCategory}
                         </span ></h5>
-              <h5> Date Booking : <span style={{ fontWeight: "normal" }} > {val.products.dateBooking}
+              <h5> Date Booking : <span style={{ fontWeight: "normal" }} > {dateBooking}
                         </span ></h5>
                   </div>
                 </td>
@@ -154,7 +154,7 @@ class History extends React.Component {
                     <th scope="col">No</th>
                     <th scope="col">Total Price</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+         
                   </tr>
                 </thead>
     <tbody>{this.renderHistoyList()}</tbody>

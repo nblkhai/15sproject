@@ -84,8 +84,11 @@ class Login extends React.Component {
                                 </div>
                                 <div className="col-md-12 form-group">
                                     <div className="creat_account d-flex align-items-center">
-                                        <input type="checkbox" id="f-option" name="selector"/>
-                                        <label for="f-option">Remember me</label>
+                                        {/* <input type="checkbox" id="f-option" name="selector"/>
+                                        <label for="f-option">Remember me</label> */}
+                                        <Link style={{ textDecoration: "none", color: "inherit" }}  to="/resetPassword">
+                                    <a className="nav-link mb-2 small" >Forgot Your Password?</a>
+                                </Link>
                                     </div>
                                     <div className="btn_3"   onClick={this.loginBtnHandler}>Log In</div>
                         

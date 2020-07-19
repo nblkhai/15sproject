@@ -11,11 +11,6 @@ class Portfolio extends React.Component {
                     <div className="breadcrumb_iner">
                         <div className="text-center tokolapak-heading">
                             <h2><span>Portofolio</span></h2>
-                            <h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel cum cumque ipsam hic
-                                    harum. Facere, iste ab, natus non magnam cumque quibusdam esse quae numquam dolorum
-                                    beatae vitae ea aut!</p>
-                            </h5>
                         </div>
                     </div>
                 </div>

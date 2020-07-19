@@ -1,10 +1,7 @@
 import React from "react";
 import "./Package.css";
-import PhotoStudio from "../../assets/images/photo-studio.jpg";
-import PosterSatu from "../../assets/images/poster.jpg";
 import Axios from "axios";
 import { API_URL } from "../../constants/API";
-import { Link } from "react-router-dom";
 import ProductCard from "../../components/ProductCard/ProductCard";
 class Package extends React.Component {
   state = {
@@ -119,14 +116,7 @@ class Package extends React.Component {
                     <h2>
                       <span>Our Package</span>
                     </h2>
-                    <h5>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Vel cum cumque ipsam hic harum. Facere, iste ab, natus
-                        non magnam cumque quibusdam esse quae numquam dolorum
-                        beatae vitae ea aut!
-                      </p>
-                    </h5>
+                   
                   </div>
                 </div>
               </div>

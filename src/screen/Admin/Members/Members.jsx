@@ -60,12 +60,24 @@ class Members extends React.Component {
         >
           Edit
         </div>
-        <div className="genric-btn danger circle">Delete</div>
+        <div  onClick={() => this.deleteBtnHandler(id)} className="genric-btn danger circle">Delete</div>
       </td>
             </tr>
             </>
         )
     })
+}
+
+deleteBtnHandler = (userId) => {
+  Axios.delete(`${API_URL}/user/deleteUser/${userId}`)
+  .then((res) => {
+    console.log(res);
+    this.getMemberList()
+    this.renderMemberList()
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 }
   render() {
     return (

@@ -1,15 +1,10 @@
 import React from "react";
-import { Carousel, CarouselControl, CarouselItem } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShippingFast,
-  faMoneyBillWave,
-  faHeadset,
-  faPeopleArrows,
-} from "@fortawesome/free-solid-svg-icons";
-import Colors from "../../constants/Colors";
-import Logo from "../../assets/images/LogoBaru.png";
 import PosterSatu from "../../assets/images/poster.jpg";
+import Bella from "../../assets/images/Crew/Bella1.jpeg"
+import Doyok from "../../assets/images/Crew/Doyok.jpeg"
+import Fakhri from "../../assets/images/Crew/Fakhri.jpeg"
+import Ojan from "../../assets/images/Crew/Fauzan.jpeg"
+import Yeyep from "../../assets/images/Crew/Yeyep.jpeg"
 import "./aboutUs.css"
 
 
@@ -78,86 +73,47 @@ class aboutUs extends React.Component {
 
               <div className="col-12 col-sm-6 col-md-4 col-lg-3">
                   <div className="our-team">
-                      <div className="picture">
-                          <img className="img-fluid" src="https://picsum.photos/130/130?image=1027"/>
-                      </div>
+                      
+                          <img className="img-fluid" src={Doyok}/>
+                     
                       <div className="team-content">
-                          <h3 className="name">Isi Nama</h3>
-                          <h4 className="title">Sutradara</h4>
+                          <h3 className="name">Alfiansyah</h3>
+                          <h4 className="title">Script Writer and Director</h4>
                       </div>
-                      <ul className="social">
-                          <li><a href="#" className="fa fa-facebook"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-twitter"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-google-plus"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-linkedin"
-                                  aria-hidden="true"></a></li>
-                      </ul>
+
                   </div>
               </div>
               <div className="col-12 col-sm-6 col-md-4 col-lg-3">
                   <div className="our-team">
-                      <div className="picture">
-                          <img className="img-fluid" src="https://picsum.photos/130/130?image=839"/>
-                      </div>
+                      
+                          <img className="img-fluid" src={Fakhri}/>
+                    
                       <div className="team-content">
-                          <h3 className="name">Isi Nama</h3>
-                          <h4 className="title">Sutradara</h4>
+                          <h3 className="name">Fakhri Muhtadin</h3>
+                          <h4 className="title">Editor</h4>
                       </div>
-                      <ul className="social">
-                          <li><a href="#" className="fa fa-facebook"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-twitter"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-google-plus"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-linkedin"
-                                  aria-hidden="true"></a></li>
-                      </ul>
                   </div>
               </div>
               <div className="col-12 col-sm-6 col-md-4 col-lg-3">
                   <div className="our-team">
-                      <div className="picture">
-                          <img className="img-fluid" src="https://picsum.photos/130/130?image=856"/>
-                      </div>
+                     
+                          <img className="img-fluid" src={Ojan}/>
+                     
                       <div className="team-content">
-                          <h3 className="name">Isi Nama</h3>
-                          <h4 className="title">Sutradara</h4>
+                          <h3 className="name">Fauzan Ramdhani</h3>
+                          <h4 className="title">Director of Photography</h4>
                       </div>
-                      <ul className="social">
-                          <li><a href="#" className="fa fa-facebook"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-twitter"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-google-plus"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-linkedin"
-                                  aria-hidden="true"></a></li>
-                      </ul>
                   </div>
               </div>
               <div className="col-12 col-sm-6 col-md-4 col-lg-3">
                   <div className="our-team">
-                      <div className="picture">
-                          <img className="img-fluid" src="https://picsum.photos/130/130?image=836"/>
-                      </div>
+                    
+                          <img className="img-fluid" src={Bella}/>
+                     
                       <div className="team-content">
-                          <h3 className="name">Isi Nama</h3>
-                          <h4 className="title">Sutradara</h4>
+                          <h3 className="name">Nabila Khairunnisa</h3>
+                          <h4 className="title">Finance and Producer</h4>
                       </div>
-                      <ul className="social">
-                          <li><a href="#" className="fa fa-facebook"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-twitter"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-google-plus"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-linkedin"
-                                  aria-hidden="true"></a></li>
-                      </ul>
                   </div>
               </div>
              
@@ -165,68 +121,48 @@ class aboutUs extends React.Component {
       <div className="row">
       <div className="col-8 col-sm-6 col-md-4 col-lg-3">
                   <div className="our-team">
-                      <div className="picture">
-                          <img className="img-fluid" src="https://picsum.photos/130/130?image=836"/>
-                      </div>
+                    
+                          <img className="img-fluid" src={Yeyep}/>
+                     
                       <div className="team-content">
-                          <h3 className="name">Isi Nama</h3>
-                          <h4 className="title">Sutradara</h4>
+                          <h3 className="name">Wahyu Fahrandika</h3>
+                          <h4 className="title">Marketing and Executive Producer</h4>
                       </div>
-                      <ul className="social">
-                          <li><a href="#" className="fa fa-facebook"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-twitter"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-google-plus"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-linkedin"
-                                  aria-hidden="true"></a></li>
-                      </ul>
                   </div>
               </div>
               <div className="col-8 col-sm-6 col-md-4 col-lg-3">
                   <div className="our-team">
-                      <div className="picture">
-                          <img className="img-fluid" src="https://picsum.photos/130/130?image=836"/>
-                      </div>
+                    
+                          <img className="img-fluid" src={Yeyep}/>
+                      
                       <div className="team-content">
-                          <h3 className="name">Isi Nama</h3>
-                          <h4 className="title">Sutradara</h4>
+                          <h3 className="name">Yefta Ferdinand</h3>
+                          <h4 className="title">Script Writer and Director</h4>
                       </div>
-                      <ul className="social">
-                          <li><a href="#" className="fa fa-facebook"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-twitter"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-google-plus"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-linkedin"
-                                  aria-hidden="true"></a></li>
-                      </ul>
                   </div>
               </div>
               <div className="col-8 col-sm-6 col-md-4 col-lg-3">
                   <div className="our-team">
-                      <div className="picture">
-                          <img className="img-fluid" src="https://picsum.photos/130/130?image=836"/>
-                      </div>
+                     
+                          <img className="img-fluid" src={Yeyep}/>
+                      
                       <div className="team-content">
-                          <h3 className="name">Isi Nama</h3>
-                          <h4 className="title">Sutradara</h4>
+                          <h3 className="name">Andi Rahmadi</h3>
+                          <h4 className="title">Podcaster</h4>
                       </div>
-                      <ul className="social">
-                          <li><a href="#" className="fa fa-facebook"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-twitter"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-google-plus"
-                                  aria-hidden="true"></a></li>
-                          <li><a href="#" className="fa fa-linkedin"
-                                  aria-hidden="true"></a></li>
-                      </ul>
                   </div>
               </div>
-
+              <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div className="our-team">
+                    
+                          <img className="img-fluid" src={Bella}/>
+                     
+                      <div className="team-content">
+                          <h3 className="name">Catya Indra Pratiwi</h3>
+                          <h4 className="title">Marketing and Podcaster</h4>
+                      </div>
+                  </div>
+              </div>
       </div>
 
   </div>
