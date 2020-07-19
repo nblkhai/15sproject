@@ -59,19 +59,6 @@ class AdminCategory extends React.Component{
           });
       };
 
-      editProductHandler = (id) => {
-        Axios.get(
-          `${API_URL}/category/${id}`
-        )
-          .then((res) => {
-            this.setState({ modalOpen: true });
-            this.setState({editCategoryForm : res.data})
-    
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
       componentDidMount() {
         this.getCategoryList();
         console.log(this.state.categoryList)
@@ -114,13 +101,6 @@ class AdminCategory extends React.Component{
                   <td>{id}</td>
               <td>{categoryName}</td>
               <td>
-              <div
-                className="list_package_edit.html"
-                className="genric-btn info circle"
-                onClick={() => this.editProductHandler(id)}
-              >
-                Edit
-              </div>
               <div className="genric-btn danger circle"  onClick={() => this.deleteBtnHandler(id)}>Delete</div>
             </td>
                   </tr>
@@ -181,50 +161,6 @@ render () {
          </div>
 
      </div>
-     <Modal  toggle={this.toggleModal}
-          isOpen={this.state.modalOpen}
-          className="edit-modal">
-<ModalHeader toggle={this.toggleModal}>
-            <caption>
-              <h3>Edit Category</h3>
-            </caption>
-          </ModalHeader>
-          <ModalBody>
-            <div className="row">
-              <div className="col-8">
-              <TextField
-                  value={this.state.editCategoryForm.categoryName}
-                  placeholder="Category Name"
-                  onChange={(e) =>
-                    this.inputHandler(e, "categoryName", "editCategoryForm")
-                  }
-                />
-              </div>
-
-            </div>
-            <div className="row">
-            <div className="col-5 mt-3">
-                <ButtonUI
-                  className="w-100"
-                  onClick={this.saveProductBtnHandler}
-                  type="contained"
-                >
-                  Save
-                </ButtonUI>
-              </div>
-            <div className="col-5 mt-3">
-                <ButtonUI
-                  className="w-100"
-                  onClick={this.toggleModal}
-                  type="outlined"
-                >
-                  Cancel
-                </ButtonUI>
-              </div>
-             
-            </div>
-          </ModalBody>
-     </Modal>
 
  </div>
         </div>

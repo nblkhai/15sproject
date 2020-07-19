@@ -6,6 +6,8 @@ import "./Home.css"
 import PosterSatu from "../../assets/images/poster.jpg";
 import PosterDua from "../../assets/images/posterr.jpg";
 import PosterTiga from "../../assets/images/poster(1).jpg";
+import Axios from "axios";
+import { API_URL } from "../../constants/API";
 import LogoBaru from "../../assets/images/LogoBaru.png"
 const dummy = [
   {
@@ -56,7 +58,15 @@ class Home extends React.Component {
       );
     });
   };
-
+  getProductList = () => {
+    Axios.get(`${API_URL}/product/sold`)
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
   nextHandler = () => {
     if (this.state.animating) return;
     let nextIndex =
@@ -65,7 +75,9 @@ class Home extends React.Component {
         : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
   };
-
+  componentDidMount() {
+    this.getProductList();
+  }
   prevHandler = () => {
     if (this.state.animating) return;
     let prevIndex =
@@ -74,6 +86,8 @@ class Home extends React.Component {
         : this.state.activeIndex - 1;
     this.setState({ activeIndex: prevIndex });
   };
+
+  
   render() {
     return (
       <div>
@@ -191,12 +205,16 @@ class Home extends React.Component {
                         <div className="text-center tokolapak-heading">
                             <h2><span>Our Package</span></h2>
                             <h5>
-                                <p>Check Our Package!</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel cum cumque ipsam hic
+                                    harum. Facere, iste ab, natus non magnam cumque quibusdam esse quae numquam dolorum
+                                    beatae vitae ea aut!</p>
                             </h5>
                         </div>
                     </div>
                 </div>
-
+                <div className="row">
+                  {this.getProductList()}
+                </div>
                 <div className="text-center mt-3">
                         <div className="btn_3"><Link
                     style={{ textDecoration: "none", color: "inherit" }}

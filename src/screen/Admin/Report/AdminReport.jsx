@@ -25,7 +25,10 @@ class AdminReport extends React.Component {
             barChart: {
               ...this.state.barChart,
               labels: [...this.state.barChart.labels, val.packageName],
-              
+              datasets:this.state.barChart.datasets.map((value)=> ({
+                  ...value, data:[...value.data,val.sold]
+              }))
+
             },
           });
         });
@@ -35,7 +38,7 @@ class AdminReport extends React.Component {
   getProductList = () => {
     Axios.get(`${API_URL}/product/products`)
       .then((res) => {
-        alert("masuk");
+        // alert("masuk");
         this.setState({ productList: res.data });
         this.setBarData()
       })

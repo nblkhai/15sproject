@@ -8,6 +8,14 @@ class Members extends React.Component {
   state = {
     memberList:[],
     modalOpen: false,
+    editMember: {
+      id: 0,
+      userName: "",
+      firstName:"",
+      lastName:"",
+     phoneNumber:""
+    },
+    userData:{},
   };
   getMemberList = () => {
     Axios.get(`${API_URL}/user/users`)
@@ -36,6 +44,14 @@ class Members extends React.Component {
       modalOpen: true,
     });
   };
+  editBtnHandler = () => {
+    this.setState({
+      editMember: {
+        ...this.state.memberList,
+      },
+      modalOpen: true,
+    });
+  };
   renderMemberList = () => {
     return this.state.memberList.map((val,idx) => {
         const{
@@ -54,12 +70,6 @@ class Members extends React.Component {
         <td>{phoneNumber}</td>
 
         <td>
-        <div
-          className="list_package_edit.html"
-          className="genric-btn info circle"
-        >
-          Edit
-        </div>
         <div  onClick={() => this.deleteBtnHandler(id)} className="genric-btn danger circle">Delete</div>
       </td>
             </tr>
@@ -105,42 +115,6 @@ deleteBtnHandler = (userId) => {
                 </thead>
     <tbody>{this.renderMemberList()}</tbody>
               </table>
-              <Modal isOpen={this.state.modalOpen} className="edit-modal">
-                <ModalHeader toggleModal={this.toggleModal}>
-                  <caption>
-                    <h3>Edit Members</h3>
-                  </caption>
-                </ModalHeader>
-                <ModalBody>
-                  <div className="row">
-                    <div className="col-12">
-                      <TextField placeholder="username" />
-                    </div>
-                    <div className="col-12 mt-3">
-                      <TextField placeholder="First Name" />
-                    </div>
-                    <div className="col-12 mt-3">
-                      <TextField placeholder="Last Name" />
-                    </div>
-                    <div className="col-12 mt-3">
-                      <TextField placeholder="Email" />
-                    </div>
-                    <div className="col-12 mt-3">
-                      <TextField placeholder="Phone Numbers" />
-                    </div>
-                    <div className="col-5 mt-5 offset-1">
-                      <div className="w-100 genric-btn primary circle">
-                        Cancel
-                      </div>
-                    </div>
-                    <div className="col-5 mt-5">
-                      <div className="w-100 genric-btn primary circle">
-                        Save
-                      </div>
-                    </div>
-                  </div>
-                </ModalBody>
-              </Modal>
             </div>
           </div>
         </div>
